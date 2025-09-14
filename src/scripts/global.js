@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===== Determinar rutas según ubicación de la página =====
     const isTemplate = location.pathname.includes("/templates/");
     const loginHref = isTemplate ? "login.html" : "templates/login.html";
-    const indexHref = isTemplate ? "index.html" : "../index.html";
+
 
     // ===== Actualizar botón de login =====
     const btnLogin = document.querySelector(".btn-login");
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             btnLogin.href = "#";
             btnLogin.addEventListener("click", () => {
                 localStorage.removeItem("currentUser");
-                window.location.href = indexHref; // redirige correctamente al index
+                window.location.href = loginHref; // redirige correctamente al index
             });
         } else {
             btnLogin.innerHTML = `Iniciar Sesión <i class="bi bi-box-arrow-in-right"></i>`;

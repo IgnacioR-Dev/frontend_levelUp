@@ -1,0 +1,196 @@
+/* ===================== HERO ===================== */
+.nosotros-hero {
+    background-image: url('../../assets/img/pc.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 140px 0;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.nosotros-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18,18,18,0.85) 0%, rgba(18,18,18,0.5) 100%);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 8px #0b0110, 0 0 4px #808080;
+}
+
+.hero-title strong {
+    color: #9c0ffa;
+    font-family: 'Finger Paint', sans-serif;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: #ccc;
+    margin-top: 1rem;
+    text-shadow: 0 0 8px #000000, 0 0 4px #fff;
+}
+
+/* ===================== SECCIONES ===================== */
+.nosotros-section, .mision-section, .vision-section {
+    padding: 80px 0;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+/* Fondos diferenciados */
+.nosotros-section {
+    background-color: #111111;
+    background-size: cover;
+    background-position: center;
+}
+
+.mision-section {
+    background-color: #131313;
+    background-size: cover;
+    background-position: center;
+}
+
+.vision-section {
+    background-color:  #1b1b1b;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Títulos y párrafos */
+.section-title {
+    font-family: 'Finger Paint', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 0 8px #000000, 0 0 4px #fff;
+}
+
+.section-content p {
+    font-size: 1.15rem;
+    max-width: 850px;
+    margin: 0 auto;
+    color: #ccc;
+}
+
+/* Iconos grandes */
+.section-content i {
+    font-size: 4rem;
+    color: #9c0ffa;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* ===================== VALORES ===================== */
+.valores-section {
+    background-color: #111;
+    padding: 80px 0;
+}
+
+.valores-section .section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-shadow: 0 0 8px #000000, 0 0 4px #fff;
+}
+
+.valores-section .row {
+    justify-content: center;
+    gap: 30px; /* separación entre tarjetas */
+}
+
+.valor-card {
+    background-color: #1e1e1e;
+    border-radius: 0.75rem;
+    padding: 2rem 1rem;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.valor-card i {
+    font-size: 3rem;
+    color: #9c0ffa;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    text-shadow: 0 0 6px #1f102a;
+}
+
+.valor-card i:hover {
+    transform: scale(1.2);
+}
+
+.valor-card h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 0 0 6px #9c0ffa;
+}
+
+.valor-card p {
+    font-size: 1rem;
+    max-width: 250px;
+    margin: 0 auto;
+    color: #ccc;
+}
+
+.valor-card:nth-child(1) { animation-delay: 0.2s; }
+.valor-card:nth-child(2) { animation-delay: 0.4s; }
+.valor-card:nth-child(3) { animation-delay: 0.6s; }
+
+.valor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* ===================== ANIMACIONES ===================== */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 991px) {
+    .valor-card { max-width: 250px; }
+    .section-title { font-size: 2.4rem; }
+}
+
+@media (max-width: 768px) {
+    .valor-card { max-width: 100%; }
+    .hero-title { font-size: 2.2rem; }
+    .section-title { font-size: 2rem; }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.8rem; }
+    .section-title { font-size: 1.6rem; }
+    .valor-card i { font-size: 2.5rem; }
+    .valor-card h4 { font-size: 1.2rem; }
+    .valor-card p { font-size: 0.95rem; }
+}

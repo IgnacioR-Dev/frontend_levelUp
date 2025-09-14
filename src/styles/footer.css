@@ -1,0 +1,83 @@
+.footer-section {
+    background-color: #180045;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.footer-section h5 {
+    font-family: 'Finger Paint';
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: #e4b509;
+}
+
+.footer-section a {
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #a7a7a7;
+}
+
+.footer-section .social-icons {
+    display: flex;
+    justify-content: center; /* centra redes sociales */
+    gap: 1rem;
+}
+
+.footer-section .social-icons a {
+    font-size: 1.5rem;
+}
+
+.footer-section input.form-control {
+    border-radius: 0.25rem;
+}
+
+.footer-section button.btn-primary {
+    background-color: #5d2496;
+    border-color: #49095d;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-section button.btn-primary:hover {
+    background-color: #402188;
+    border-color: #3e2188;
+    transform: translateY(1px);
+}
+
+.payment-icon {
+  font-size: 1.8rem;  /* tamaño uniforme */
+  color: #495057;    /* gris elegante */
+  transition: transform 0.2s ease-in-out, color 0.2s;
+}
+
+.footer-section hr {
+    border-color: #444;
+}
+
+
+.payment-icon:hover {
+  transform: scale(1.2);
+  color: #ffffff; /* azul bootstrap al pasar el mouse */
+}
+
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+    .footer-logo {
+        margin-bottom: 0; /* elimina margen inferior en desktop */
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-section .social-icons {
+        justify-content: center; /* centra redes en móviles también */
+    }
+    .footer-logo {
+        margin: 0 auto 1rem; /* centra logo en móviles */
+    }
+}
+

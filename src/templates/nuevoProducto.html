@@ -5,9 +5,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Crear nuevo Producto</title>
+  <!-- Latest compiled and minified CSS -->
   <link href="../styles/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Latest compiled JavaScript -->
   <script src="../scripts/js/bootstrap.bundle.min.js"></script>
+  <!-- Importar estilo propios -->
   <link rel="stylesheet" href="../styles/css/estiloPropio.css">
+  <link rel="stylesheet" href="../styles/footer.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="./styles/indexStyles/hero.css">
+  <link rel="stylesheet" href="./styles/indexStyles/categorias.css">
+  <!-- Google Fonts: Roboto e Irish Grover -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+  <!-- Icono de pestaña -->
+  <link rel="icon" type="image/x-icon" href="../assets/icon/icon.ico">
   <style>
     .img-preview {
       max-width: 150px;
@@ -17,42 +31,59 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-sm bg-purple">
-    <div class="container-fluid">
-      <a class="navbar-brand text-white" href="#">Logo</a>
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link text-white" href="administrador.html">Administrador</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
-            Usuario
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Configuración</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
 
-  <!-- Main -->
-  <main>
-    <div class="container mt-5">
+  <!-- Banner -->
+  <div class="promo-banner">
+    <span class="promo-text"></span>
+  </div>
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-md">
+      <div class="container">
+        <a class="navbar-brand">
+          <img src="../assets/icon/logo.png" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMinimal"
+          aria-controls="navbarMinimal" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMinimal">
+          <ul class="navbar-nav mx-auto gap-3">
+            <li class="nav-item"><a class="nav-link" href="administrador.html">Panel Administrador</a></li>
+          </ul>
+          <!-- Dropdown del usuario a la derecha -->
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Administrador
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="mostrarUsuarios.html">Editar Perfiles</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenido -->
+  <main
+    style="background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');">
+    <div class="container p-5 bg-darkpurple">
       <div class="row justify-content-center">
         <div class="col-sm-8">
           <div class="shadow rounded">
-            <div class="p-3 bg-purple">
+            <div class="p-3 bg-blue rounded-top">
               <h1 class="text-center text-white">Añadir nuevo Producto</h1>
             </div>
-
-            <form id="formProducto" class="p-3">
+            <!-- Formulario -->
+            <form id="formProducto" class="p-3 bg-gray ">
 
               <!-- Código -->
               <div class="mb-3">
@@ -129,7 +160,7 @@
 
               <!-- Botón -->
               <div class="text-center">
-                <input type="submit" class="btn bg-purple btn-grow btn-md px-5" value="Añadir">
+                <input type="submit" class="btn bg-blue btn-grow btn-md px-5" value="Añadir">
               </div>
 
             </form>
@@ -138,6 +169,40 @@
       </div>
     </div>
   </main>
+
+  <!-- Footer -->
+
+  <footer class="footer-section text-white">
+    <div class="container py-5">
+      <div class="row align-items-start">
+        <!-- ENLACES RÁPIDOS -->
+        <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
+          <h5>Enlaces Rápidos</h5>
+          <ul class="list-unstyled footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="./templates/productos.html">Productos</a></li>
+            <li><a href="./templates/nosotros.html">Nosotros</a></li>
+            <li><a href="./templates/blogs.html">Blogs</a></li>
+            <li><a href="./templates/contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <!-- NEWSLETTER -->
+        <div class="col-12 col-md-3 text-center text-md-start">
+          <h5>Suscríbete</h5>
+          <p>Recibe ofertas exclusivas y novedades en tu correo.</p>
+          <form class="flex flex-column flex-sm-row gap-2" action="#" method="POST">
+            <input type="email" class="form-control w-100" placeholder="Correo electrónico" required>
+            <button type="submit" class="btn btn-primary my-2 w-100">Suscribirse</button>
+          </form>
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+      <p class="text-center mb-0">&copy; 2025 Level Up Gamer. Todos los derechos reservados.</p>
+    </div>
+    </div>
+  </footer>
 
   <!-- Scripts -->
   <script>
@@ -212,48 +277,6 @@
       reader.readAsDataURL(file);
     });
   </script>
-
-      <footer class="bg-purple text-white mt-5">
-        <div class="container py-4">
-            <div class="row">
-
-                <!-- Columna 1 -->
-                <div class="col-md-4 mb-3">
-                    <h5>Sobre nosotros</h5>
-                    <p>
-                        Level-Up Gamer es una tienda online dedicada a satisfacer las necesidades de los entusiastas de
-                        los
-                        videojuegos en Chile.
-                    </p>
-                    <p>
-                        Aqui encontraras los mejores productos al mejor precio.
-                    </p>
-                </div>
-
-                <!-- Columna 2 -->
-                <div class="col-md-4 mb-3">
-                    <h5>Enlaces útiles</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Inicio</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Administrador</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Contacto</a></li>
-                    </ul>
-                </div>
-
-                <!-- Columna 3 -->
-                <div class="col-md-4 mb-3">
-                    <h5>Contacto</h5>
-                    <p>Email: ejemplo@correo.com</p>
-                    <p>Tel: +123 456 789</p>
-                </div>
-
-            </div>
-            <hr class="border-light">
-            <div class="text-center">
-                <small>&copy; 2025 Level-Up - Todos los derechos reservados</small>
-            </div>
-        </div>
-    </footer>
 </body>
 
 </html>

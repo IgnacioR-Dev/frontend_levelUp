@@ -1,0 +1,212 @@
+/* ===================== HEADER / NAVBAR ===================== */
+.promo-banner {
+    background-color: #180045;
+    padding: 10px 0;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.promo-text {
+    font-family: 'Roboto',sans-serif;
+    font-weight: 700;
+    font-size: 1.0rem;
+    color: #eabf13;
+    display: inline-block;
+
+    border-right: 2px solid #c7c7c7; /* cursor tipo máquina de escribir */
+    padding-right: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 10s steps(100) infinite;
+}
+
+.navbar {
+    padding: 0.5rem 1rem;
+    background-color: #361070;
+    color: #fff;
+}
+
+.navbar-brand {
+    overflow: visible; /* probar si esto arregla el problema */
+}
+
+.navbar-brand img {
+    height: auto;
+    max-height: 50px;
+    width: auto;
+    transform: scale(1.6) rotate(-5deg); /* se agranda y gira un poco */
+}
+
+/* NAV LINKS */
+.navbar-nav .nav-link {
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background-color: #e1c10c; 
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Espaciado entre links */
+.navbar-nav.gap-3 > .nav-item {
+    margin-right: 1rem;
+}
+
+/* BOTÓN HAMBURGUESA */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* HEADER ACTIONS (login + carrito) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-login{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-login:hover {
+    color: #e1c10c; 
+    transform: scale(1.1);
+}
+
+.btn-login::after{
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #fff;
+    background-color: rgba(0,0,0,0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, bottom 0.2s ease;
+}
+
+
+.btn-cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-cart:hover {
+    color: #e1c10c; 
+    transform: scale(1.1);
+}
+
+
+.btn-cart::after {
+    content: 'Carro de Compras';
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #fff;
+    background-color: rgba(0,0,0,0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, bottom 0.2s ease;
+}
+
+.btn-cart:hover::after {
+    opacity: 1;
+    bottom: -40px;
+}
+
+/* BADGE */
+.btn-cart .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #ffa629;
+    color: #171717;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 50%;
+}
+
+
+@media (max-width: 1024px) {
+    .navbar-brand {
+        display: flex;
+        justify-content: center; /* centrar horizontal */
+        align-items: center;     /* centrar vertical */
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    .navbar-nav {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .header-actions {
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .promo-text {
+        animation: none;       /* desactiva animación */
+        border-right: none;    /* quita el cursor */
+        white-space: normal;   /* permite que el texto se ajuste */
+        text-align: center;    /* centrado en pantalla pequeña */
+        font-size: 1rem;       /* opcional: reducir tamaño */
+    }
+}
+
+@keyframes typing {
+    0% { width: 0ch; }
+    40%, 80% { width: 64.5ch; } 
+    100% { width: 0ch; }
+}
+
+@keyframes blink {
+    100% { border-color: transparent; }
+}

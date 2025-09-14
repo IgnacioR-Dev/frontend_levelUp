@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Crear nuevo Usuario</title>
+  <title>Usuarios</title>
   <!-- Latest compiled and minified CSS -->
   <link href="../styles/css/bootstrap.min.css" rel="stylesheet">
   <!-- Latest compiled JavaScript -->
@@ -22,12 +22,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
   <!-- Icono de pestaña -->
   <link rel="icon" type="image/x-icon" href="../assets/icon/icon.ico">
-  <style>
-    .img-preview {
-      max-width: 150px;
-      display: none;
-    }
-  </style>
 </head>
 
 <body>
@@ -75,66 +69,40 @@
   <!-- Contenido -->
   <main
     style="background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');">
-    <div class="container p-5 bg-darkpurple">
-      <div class="row justify-content-center">
-        <div class="col-sm-8">
-          <div class="shadow rounded">
-            <div class="p-3 bg-blue rounded-top">
-              <h1 class="text-center text-white">Añadir nuevo Usuario</h1>
-            </div>
-            <!-- Formulario -->
-            <form id="formUsuario" class="p-3 bg-gray">
-
-              <!-- Nombre -->
-              <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" required>
-              </div>
-
-              <!-- Apellido -->
-              <div class="mb-3">
-                <label for="apellido" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="apellido" required>
-              </div>
-
-              <!-- Fecha de nacimiento -->
-              <div class="mb-3">
-                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="fechaNacimiento" required>
-              </div>
-
-              <!-- Correo -->
-              <div class="mb-3">
-                <label for="correo" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="correo" required>
-              </div>
-
-              <!-- Foto de perfil -->
-              <div class="mb-3">
-                <label for="fotoPerfil" class="form-label">Foto de Perfil</label>
-                <input type="file" class="form-control" id="fotoPerfil" accept="image/*" required>
-                <div class="mt-2">
-                  <img id="previewFoto" class="img-preview" alt="Vista previa">
-                </div>
-              </div>
-
-              <!-- Rol -->
-              <div class="mb-3">
-                <label for="rol" class="form-label">Rol</label>
-                <select class="form-select" id="rol" required>
-                  <option value="" disabled selected>Seleccione un rol</option>
-                  <option value="Administrador">Administrador</option>
-                  <option value="Vendedor">Vendedor</option>
-                  <option value="Cliente">Cliente</option>
-                </select>
-              </div>
-
-              <!-- Boton -->
+    <!--Tarjetas-->
+    <div class="container bg-darkpurple">
+      <div class="p-3 text-white text-center">
+        <h1 class="display-3">Gestion de Usuarios</h1>
+        <p class="lead"></p>
+      </div>
+      <div class="row p-3 justify-content-center">
+        <!-- Columna 1 -->
+        <div class="col-md-4">
+          <div class="card m-1 rounded">
+            <img class="card-img-top" src="../assets/img/usuarios02.jpg" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title text-center">Crear Usuario</h4>
+              <p class="card-text p-1">Formulario de registro.<br>Aquí podrás crear nuevos usuarios, tanto empleados
+                como clientes.
+              </p>
               <div class="text-center">
-                <input type="submit" class="btn bg-blue btn-grow btn-md px-5" value="Añadir">
+                <a href="nuevoUsuario.html" class="btn bg-blue text-white btn-grow">Acceder</a>
               </div>
-
-            </form>
+            </div>
+          </div>
+        </div>
+        <!-- Columna 2 -->
+        <div class="col-md-4">
+          <div class="card m-1 rounded">
+            <img class="card-img-top" src="../assets/img/usuarios03.jpg" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title text-center">Ver Usuarios</h4>
+              <p class="card-text p-1">Lista de Usuarios.<br>Aquí podrás ver la lista completa de usuarios existentes y
+                administrarlos.</p>
+              <div class="text-center">
+                <a href="mostrarUsuarios.html" class="btn bg-blue text-white btn-grow">Acceder</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -174,56 +142,6 @@
     </div>
     </div>
   </footer>
-
-  <!-- Scripts -->
-  <script>
-    const form = document.getElementById("formUsuario");
-    const inputFoto = document.getElementById("fotoPerfil");
-    const previewFoto = document.getElementById("previewFoto");
-
-    // Vista previa de foto de perfil
-    inputFoto.addEventListener("change", function () {
-      const file = this.files[0];
-      if (file) {
-        previewFoto.src = URL.createObjectURL(file);
-        previewFoto.style.display = "block";
-      }
-    });
-
-    // Guardar usuario
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const file = inputFoto.files[0];
-      if (!file) {
-        alert("Selecciona una foto de perfil");
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = function (event) {
-        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-        const nuevoUsuario = {
-          nombre: document.getElementById("nombre").value,
-          apellido: document.getElementById("apellido").value,
-          fechaNacimiento: document.getElementById("fechaNacimiento").value,
-          correo: document.getElementById("correo").value,
-          rol: document.getElementById("rol").value,
-          fotoPerfil: event.target.result
-        };
-
-        usuarios.push(nuevoUsuario);
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-        alert("✅ Usuario añadido con éxito");
-        // Redirigir a mostrarUsuarios
-        window.location.href = "mostrarUsuarios.html";
-      };
-
-      reader.readAsDataURL(file);
-    });
-  </script>
 </body>
 
 </html>

@@ -1,0 +1,105 @@
+/* ===== Sección principal de registro ===== */
+.register-section {
+  background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* ajusta según header+footer */
+  padding: 2rem 0;
+}
+
+/* ===== Tarjeta del formulario ===== */
+.register-card {
+  background-color: #130a29;
+  color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px; /* tamaño compacto */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* ===== Logo y título ===== */
+.register-title{
+  font-family: 'Finger Paint', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+
+.register-logo{
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.register-card h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Inputs y selects ===== */
+.register-card .form-control,
+.register-card .form-select {
+  border-radius: 0.5rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+}
+
+.register-card .form-control:focus,
+.register-card .form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+
+/* ===== Labels ===== */
+.register-card .form-label {
+  font-size: 0.9rem;
+  color: #d1d1d1;
+  margin-bottom: 0.3rem;
+}
+
+/* ===== Filas de dos columnas ===== */
+.register-card .row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.register-card .col-md-6 {
+  flex: 1;
+}
+
+/* ===== Botón de registro ===== */
+.register-card .btn {
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  background-color: #2a0e44;
+}
+
+.register-card .btn:hover {
+  transform: translateY(1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .register-card .row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .register-card {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+}

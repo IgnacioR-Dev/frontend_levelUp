@@ -1,0 +1,97 @@
+/* ===== Sección principal del login ===== */
+.login-section {
+  background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');
+  min-height: calc(100vh - 150px); /* Ocupa la pantalla sin pisar header/footer */
+  display: flex;
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* ===== Tarjeta del formulario ===== */
+.login-card {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  background-color: #130a29;
+  color: #fff;
+}
+
+/* ===== Imagen lateral ===== */
+.login-img {
+  border-radius: 1rem;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+/* ===== Logo dentro del formulario ===== */
+.login-logo {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ===== Título ===== */
+.login-card h3 {
+  font-family: 'Finger Paint', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+/* ===== Inputs ===== */
+.login-card .form-control {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.login-card .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+
+/* ===== Checkbox y enlaces ===== */
+.login-card .form-check-label {
+  font-size: 0.9rem;
+}
+
+.login-card a {
+  font-size: 0.9rem;
+  color: #0d6efd;
+  transition: color 0.2s ease;
+}
+
+.login-card a:hover {
+  color: #0a58ca;
+  text-decoration: underline;
+}
+
+/* ===== Botón principal ===== */
+.login-card .btn {
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  background-color: #2a0e44;
+}
+
+.login-card .btn:hover {
+  transform: translateY(2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .login-section {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .login-img {
+    display: none; /* En móvil ocultamos la imagen lateral */
+  }
+}

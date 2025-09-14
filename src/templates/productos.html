@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/styles/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="/src/styles/base.css">
+    <link rel="stylesheet" href="/src/styles/header.css">
+    <link rel="stylesheet" href="/src/styles/footer.css">
+    <link rel="stylesheet" href="/src/styles/indexStyles/hero.css">
+    <link rel="stylesheet" href="/src/styles/indexStyles/categorias.css">
+    <link rel="stylesheet" href="/src/styles/soporteWsp.css">
+    <link rel="stylesheet" href="/src/styles/productoStyle/productoSection.css">
+
+
+    <!-- Google Fonts: Roboto e Irish Grover -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+
+
+
+    <title>Catálogo de productos LevelUp Gamer</title>
+</head>
+
+<body>
+    <div class="promo-banner">
+        <span class="promo-text">
+            Descuento de por vida del 20% para usuarios registrados con correos de Duoc UC.
+        </span>
+    </div>
+
+
+    <header>
+        <nav class="navbar navbar-expand-md">
+            <div class="container">
+                <a class="navbar-brand">
+                    <img src="/src/assets/icons/logo.png" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMinimal"
+                    aria-controls="navbarMinimal" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMinimal">
+                    <ul class="navbar-nav mx-auto gap-3">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    </ul>
+                    <div class="header-actions gap-3">
+                        <a href="login.html" class="btn-login">
+                            Iniciar Sesión
+                            <i class="bi bi-box-arrow-in-right"></i>
+                        </a>
+                        <a href="#" class="btn-cart">
+                            <i class="bi bi-cart-fill"></i>
+                            <span class="badge">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero-section py-5"
+            style="background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');">
+            <div class="container hero-container rounded shadow">
+                <div class="row align-items-center">
+
+                    <!-- TEXTO PRINCIPAL -->
+                    <div class="col-md-6 text-center text-md-center mb-4 mt-2">
+                        <h1 class="hero-title">Conoce nuestra variedad de<strong> productos</strong></h1>
+                        <p class="hero-subtitle">Encuentra las mejores consolas, computadoras y accesorios para gamers
+                            en Chile.
+                        </p>
+                        <a href="#productosSection" class="btn btn-primary btn-lg hero-btn">Ver catálogo</a>
+                    </div>
+
+                    <!-- IMAGEN HERO -->
+                    <div class="col-md-6 text-center">
+                        <img src="https://cdn.shopify.com/s/files/1/0051/3674/4566/files/Chris_--set-up-photos-for-mount--it--2024-10-19-11-50-29--manual_1024x1024.jpg?v=1730915086"
+                            alt="Gamer Setup" class="img-fluid hero-img rounded">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="productosSection" class="py-5">
+
+            <h2 class="section-title text-center mb-5">Nuestro Catálogo de Productos</h2>
+            <div class="container">
+                <div class="filter-bar d-flex flex-wrap gap-3 mb-4 justify-content-end ">
+
+                    <!-- Filtrar por categoría -->
+                    <select id="filter-category" class="form-select w-auto">
+                        <option value="all">Todas las categorías</option>
+                        <option value="Consolas">Consolas</option>
+                        <option value="PC Gamer">PC Gamer</option>
+                        <option value="Sillas Gamer">Sillas Gamer</option>
+                        <option value="Accesorios">Accesorios</option>
+                        <option value="Mouse">Mouse</option>
+                        <option value="MousePad">MousePad</option>
+                        <option value="Juegos de Mesa">Juegos de Mesa</option>
+                        <option value="Poleras Personalizadas">Poleras Personalizadas</option>
+                    </select>
+
+                    <!-- Ordenar -->
+                    <select id="sort-products" class="form-select w-auto">
+                        <option value="default">Ordenar por</option>
+                        <option value="low-price">Menor precio</option>
+                        <option value="high-price">Mayor precio</option>
+                    </select>
+
+
+                </div>
+
+                <!-- Categoría: Consolas -->
+                <h4 class="mb-4">Consolas</h4>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Consolas" data-price="549990">
+                            <img src="/src/assets/img/ps5.jpg" class="card-img-top" alt="PlayStation 5">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">PlayStation 5</h5>
+                                <p class="card-text">$549.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Consolas" data-price="499990">
+                            <img src="https://www.adslzone.net/app/uploads-adslzone.net/2020/03/xbox-series-x-delantera-trasera.jpg?x=480&quality=80"
+                                class="card-img-top" alt="Xbox Series X">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Xbox Series X</h5>
+                                <p class="card-text">$499.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Consolas" data-price="329990">
+                            <img src="https://media.falabella.com/falabellaCL/123426431_01/w=800,h=800,fit=pad"
+                                class="card-img-top" alt="Nintendo Switch">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Nintendo Switch</h5>
+                                <p class="card-text">$329.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoría: PC Gamer -->
+                <h4 class="mb-4">PC Gamer</h4>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="PC Gamer" data-price="1299990">
+                            <img src="https://sipoonline.cl/wp-content/uploads/2024/05/Pc-Gamer-Asus-Strix_Intel-Core-i9-14900KF-64GB-DDR5-5600mhz-RTX-4090-24GB.png"
+                                class="card-img-top" alt="PC Gamer ASUS ROG Strix">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">PC Gamer ASUS ROG Strix</h5>
+                                <p class="card-text">$1.299.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="PC Gamer" data-price="1099990">
+                            <img src="https://sipoonline.cl/wp-content/uploads/2025/04/Gabinete-Gamer-Msi-Pano-100R-PZ-2.webp"
+                                class="card-img-top" alt="PC Gamer MSI">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">PC Gamer MSI</h5>
+                                <p class="card-text">$1.099.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="PC Gamer" data-price="1199990">
+                            <img src="https://www.gizcomputer.com/wp-content/uploads/2019/03/Gigabyte-AC300W.png"
+                                class="card-img-top" alt="PC Gamer Gigabyte">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">PC Gamer Gigabyte</h5>
+                                <p class="card-text">$1.199.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoría: Sillas Gamer -->
+                <h4 class="mb-4">Sillas Gamer</h4>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Sillas Gamer" data-price="349990">
+                            <img src="https://secretlab.eu/cdn/shop/products/TITAN-2020-STEALTH-1_grande.jpg?v=1626092669"
+                                class="card-img-top" alt="Silla Gamer Secretlab Titan">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Silla Gamer Secretlab Titan</h5>
+                                <p class="card-text">$349.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Sillas Gamer" data-price="289990">
+                            <img src="https://abacomp.cl/wp-content/uploads/2021/10/ARMOR-CHAIR.jpg"
+                                class="card-img-top" alt="Silla Gamer Cougar">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Silla Gamer Cougar Armor</h5>
+                                <p class="card-text">$289.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Sillas Gamer" data-price="399990">
+                            <img src="https://cloud.corferias.co/service/vitrina_virtual/product_image.cfm?id=72893&shop_id=10&type=2"
+                                class="card-img-top" alt="Silla Gamer DXRacer">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Silla Gamer DXRacer</h5>
+                                <p class="card-text">$399.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoría: Accesorios -->
+                <h4 class="mb-4">Accesorios</h4>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Accesorios" data-price="59990">
+                            <img src="/src/assets/img/accesorio.webp" class="card-img-top" alt="Control Xbox Series X">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Controlador Xbox Series X</h5>
+                                <p class="card-text">$59.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Accesorios" data-price="79990">
+                            <img src="https://media.solotodo.com/media/products/1372884_picture_1618867656.jpg"
+                                class="card-img-top" alt="Auriculares HyperX">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Auriculares HyperX Cloud II</h5>
+                                <p class="card-text">$79.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Accesorios" data-price="119990">
+                            <img src="https://media.spdigital.cl/thumbnails/products/qvi2wbnv_cb436cd5_thumbnail_4096.jpg"
+                                class="card-img-top" alt="Teclado Razer">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Teclado Mecánico Razer</h5>
+                                <p class="card-text">$119.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mouse -->
+                <h4 class="mb-4">Mouse</h4>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Mouse" data-price="49990">
+                            <img src="/src/assets/img/mouse.webp" class="card-img-top" alt="Mouse Logitech G502">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Logitech G502 HERO</h5>
+                                <p class="card-text">$49.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Mouse" data-price="59990">
+                            <img src="https://http2.mlstatic.com/D_NQ_NP_761962-MLC31212811380_062019-O-mouse-razer-deathadder-elite.webp"
+                                class="card-img-top" alt="Razer DeathAdder">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Razer DeathAdder Elite</h5>
+                                <p class="card-text">$59.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Mouse" data-price="69990">
+                            <img src="https://m.media-amazon.com/images/I/51UnFzpQ-RL._UF894,1000_QL80_.jpg"
+                                class="card-img-top" alt="SteelSeries Rival 600">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">SteelSeries Rival 600</h5>
+                                <p class="card-text">$69.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MousePad -->
+                <h4 class="mb-4">MousePad</h4>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="MousePad" data-price="29990">
+                            <img src="https://cdn.gameplanet.com/wp-content/uploads/2022/10/31165335/811659039842-mousepad-halo-goliathus.jpg"
+                                class="card-img-top" alt="Razer Goliathus">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Razer Goliathus Extended</h5>
+                                <p class="card-text">$29.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="MousePad" data-price="99990">
+                            <img src="https://http2.mlstatic.com/D_NQ_NP_699110-MLA84539763144_052025-O.webp"
+                                class="card-img-top" alt="Logitech Powerplay">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Logitech Powerplay</h5>
+                                <p class="card-text">$99.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="MousePad" data-price="39990">
+                            <img src="https://assets.pcfactory.cl/public/foto/50696/1_500.jpg?t=1752516451467"
+                                class="card-img-top" alt="Corsair MM300">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Corsair MM300 Pro</h5>
+                                <p class="card-text">$39.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juegos de Mesa -->
+                <h4 class="mb-4">Juegos de Mesa</h4>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Juegos de Mesa" data-price="29990">
+                            <img src="/src/assets/img/juegosmesa.jpg" class="card-img-top" alt="Catan">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Catan</h5>
+                                <p class="card-text">$29.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Juegos de Mesa" data-price="24990">
+                            <img src="https://hasbrostore.cl/28348-large_default/juego-de-mesa-monopoly-clasico.jpg"
+                                class="card-img-top" alt="Monopoly">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Monopoly</h5>
+                                <p class="card-text">$24.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Juegos de Mesa" data-price="9990">
+                            <img src="https://dojiw2m9tvv09.cloudfront.net/10102/product/unoclasico-14328.jpg"
+                                class="card-img-top" alt="UNO">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">UNO</h5>
+                                <p class="card-text">$9.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poleras Personalizadas -->
+                <h4 class="mb-4">Poleras Personalizadas</h4>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Poleras Personalizadas" data-price="14990">
+                            <img src="/src/assets/img/poleras.webp" class="card-img-top" alt="Polera Gamer Level-Up">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Polera Gamer 'Level-Up'</h5>
+                                <p class="card-text">$14.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Poleras Personalizadas" data-price="16990">
+                            <img src="https://home.ripley.cl/store/Attachment/WOP/D397/2000400124366/2000400124366_2.jpg"
+                                class="card-img-top" alt="Polera Mario Bros">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Polera Mario Bros</h5>
+                                <p class="card-text">$16.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm" data-category="Poleras Personalizadas" data-price="17990">
+                            <img src="https://i.redd.it/ukwbv3vi4er51.jpg" class="card-img-top" alt="Polera Zelda">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Polera Zelda Ocarina</h5>
+                                <p class="card-text">$17.990 CLP</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <footer class="footer-section text-white">
+        <div class="container py-5">
+            <div class="row align-items-start">
+                <!-- LOGO + Métodos de pago -->
+                <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
+                    <h5>Métodos de Pago</h5>
+
+                    <!-- Métodos de pago con Bootstrap Icons -->
+                    <div class="payment-methods d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
+                        <i class="bi bi-credit-card payment-icon" title="Tarjeta de crédito"></i>
+                        <i class="bi bi-wallet2 payment-icon" title="Pago con billetera"></i>
+                        <i class="bi bi-bank payment-icon" title="Transbank/WebPay"></i>
+                        <i class="bi bi-cash-stack payment-icon" title="Redcompra/Débito"></i>
+                    </div>
+                </div>
+
+                <!-- ENLACES RÁPIDOS -->
+                <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- REDES SOCIALES -->
+                <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
+                    <h5>Síguenos</h5>
+                    <div class="social-icons d-flex justify-content-center justify-content-md-start gap-3 mt-2">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+
+
+                <!-- NEWSLETTER -->
+                <div class="col-12 col-md-3 text-center text-md-start">
+                    <h5>Suscríbete</h5>
+                    <p>Recibe ofertas exclusivas y novedades en tu correo.</p>
+                    <form class="flex flex-column flex-sm-row gap-2" action="#" method="POST">
+                        <input type="email" class="form-control w-100" placeholder="Correo electrónico" required>
+                        <button type="submit" class="btn btn-primary my-2 w-100">Suscribirse</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2025 Level Up Gamer. Todos los derechos reservados.</p>
+        </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <div class="whatsapp-container">
+        <a href="#" class="whatsapp-float" id="whatsapp-btn" aria-label="Soporte Técnico">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+
+        <!-- CUADRO DE CONFIRMACIÓN -->
+        <div class="whatsapp-confirm" id="whatsapp-confirm">
+            <p>Serás redirigido a WhatsApp<br>para contactar al servicio técnico.</p>
+            <div class="actions">
+                <button id="cancel-btn">Cancelar</button>
+                <a href="https://wa.me/56912345678?text=Hola,%20necesito%20soporte%20técnico" target="_blank"
+                    id="continue-btn">Continuar</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/src/scripts/soporteWsp.js"></script>
+    <script src="/src/scripts/filtrosProduct.js"></script>
+    <script src="/src/scripts/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

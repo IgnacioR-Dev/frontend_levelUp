@@ -1,0 +1,174 @@
+/* Contenedor de filtros */
+.filter-bar {
+    background-color: transparent; 
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    align-items: center;
+}
+
+/* Selects minimalistas */
+.filter-bar select {
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.filter-bar select:focus {
+    border-color: #495057;
+    box-shadow: 0 0 0 0.2rem rgba(73,80,87,0.1);
+    outline: none;
+}
+
+/* Botones de acción (si los hay) */
+.filter-bar button {
+    background-color: #495057;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.filter-bar button:hover {
+    background-color: #343a40;
+}
+
+/* ===== Sección productos ===== */
+#productosSection {
+    background-color: #121212; /* Fondo general oscuro */
+    padding: 3rem 0;
+}
+
+/* ===== Títulos de sección ===== */
+#productosSection .section-title,
+#productosSection h2 {
+    font-family: 'Finger Paint', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* ===== Subtítulos de categoría ===== */
+#productosSection h4 {
+    font-family: 'Finger Paint', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+}
+
+/* ===== Cards ===== */
+#productosSection .card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: #1e1e1e; /* Fondo de la tarjeta */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hover con efecto de elevación */
+#productosSection .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* ===== Imagen ===== */
+#productosSection .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== Detalles (texto) ===== */
+#productosSection .card-body {
+    padding: 1rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#productosSection .card-body h5,
+#productosSection .card-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    color: #ffffff; /* Texto blanco */
+}
+
+#productosSection .card-body p,
+#productosSection .card-text {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #00c3ff; /* Precio con color llamativo */
+    margin: 0;
+}
+
+#productosSection .card-body .desc {
+    font-weight: 400;
+    color: #cccccc;
+    margin-top: 0.25rem;
+    font-size: 0.95rem;
+}
+
+/* ===== Footer / Botón ===== */
+#productosSection .card-footer {
+    padding: 0.9rem 1rem;
+    background: transparent;
+    border-top: 0;
+    text-align: center;
+}
+
+#productosSection .card-footer .btn {
+    border-radius: 0.5rem;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    background-color: #2a0e44;
+    color: #fff;
+    border: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    cursor: pointer;
+}
+
+#productosSection .card-footer .btn:hover {
+    transform: translateY(2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    background-color: #3b1770;
+}
+
+/* ===== Helpers ===== */
+#productosSection .col.invisible {
+    visibility: hidden;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+    #productosSection h2 { font-size: 2.1rem; }
+    #productosSection h4 { font-size: 1.6rem; }
+    #productosSection .card-img-top { height: 180px; }
+}
+
+@media (max-width: 768px) {
+    #productosSection h2 { font-size: 1.95rem; }
+    #productosSection h4 { font-size: 1.45rem; }
+    #productosSection .card-img-top { height: 160px; }
+    #productosSection .card-body h5 { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+    #productosSection .card-img-top { height: 140px; }
+    #productosSection .card-body h5 { font-size: 0.95rem; }
+    #productosSection .card-body p { font-size: 0.9rem; }
+    #productosSection .card-footer .btn { padding: 0.45rem 0.9rem; font-size: 0.9rem; }
+}

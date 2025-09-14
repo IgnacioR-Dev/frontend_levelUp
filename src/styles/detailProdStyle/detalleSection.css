@@ -1,0 +1,94 @@
+/* Contenedor principal */
+#detalleProducto {
+    background-color: #191919;
+    padding: 60px 0;
+}
+
+.titulo {
+    font-family: 'Finger Paint', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Tarjeta principal */
+.detalle-card {
+    width: 100%;
+    height: 400px; /* Altura fija para mantener consistencia */
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #201f1f;
+}
+
+.detalle-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Información del producto */
+#detalle-container .col-lg-4.d-flex.flex-column {
+    color: #e0e0e0;
+}
+
+#detalle-container h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+#detalle-container .descripcion {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+#detalle-container .precio {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #d9ff04;
+    margin-bottom: 1.5rem;
+}
+
+#detalle-container .btn-agregar {
+    background-color: #3d0861;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#detalle-container .btn-agregar:hover {
+    background-color: #6800b3;
+}
+
+/* Mini-galería */
+.mini-card {
+    width: 100%;
+    height: 180px; /* Altura uniforme */
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #201f1f;
+}
+
+.mini-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Layout responsive */
+@media (max-width: 992px) {
+    #detalle-container .row {
+        flex-direction: column;
+    }
+    .detalle-card {
+        height: 300px;
+    }
+    .mini-card {
+        height: 150px;
+    }
+}

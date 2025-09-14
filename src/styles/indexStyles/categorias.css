@@ -123,4 +123,7 @@
         max-width: 200px;
         aspect-ratio: 1; /* cuadrada en móviles */
     }
+    .category-title{
+        font-size: 1.2rem;
+    }
 }

@@ -1,5 +1,4 @@
 .hero-section {
-    background-image: url('/src/assets/img/luffy.png');;
     color: #fff;
 }
 
@@ -15,9 +14,9 @@
 }
 
 .hero-title strong{
-       font-family: 'Finger Paint', sans-serif;
-       color: #9c0ffa;
-       font-size: 3rem;
+    font-family: 'Finger Paint', sans-serif;
+    color: #9c0ffa;
+    font-size: 3rem;
 }
 
 .hero-subtitle {

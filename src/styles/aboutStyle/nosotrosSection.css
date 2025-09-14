@@ -1,6 +1,6 @@
 /* ===================== HERO ===================== */
 .nosotros-hero {
-    background-image: url('/src/assets/img/pc.jpg');
+    background-image: url('../../assets/img/pc.jpg');
     background-size: cover;
     background-position: center;
     padding: 140px 0;

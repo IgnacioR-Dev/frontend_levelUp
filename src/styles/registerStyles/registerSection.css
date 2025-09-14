@@ -88,30 +88,71 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-/* ===== Responsive ===== */
+
+/* ===== Ajustes móviles ===== */
 @media (max-width: 768px) {
+    /* Columnas de dos inputs se apilan */
     .register-card .row {
         flex-direction: column;
     }
-}
 
-@media (max-width: 576px) {
-    .register-card {
-        max-width: 95%;
-        padding: 1.5rem;
+    .register-card .col-md-6 {
+        flex: 1 1 100%;
     }
 }
+@media (max-width: 576px) {
+    .register-section {
+        padding: 2rem 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* que no se desborde hacia el footer */
+        min-height: auto;
+    }
 
-/* ===== Scrollbar del formulario ===== */
-.register-card::-webkit-scrollbar {
-    width: 8px;
-}
+    .register-card {
+        width: 95%;                      /* más ancha que en escritorio */
+        max-width: none;                  /* elimina el límite de 420px */
+        max-height: 80vh;                 /* menos alta que en escritorio */
+        overflow-y: auto;                 /* scroll interno si es necesario */
+        padding: 1.5rem;
+    }
 
-.register-card::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.3);
-    border-radius: 4px;
-}
+    .register-card h3.register-title {
+        font-size: 1.6rem;
+        text-align: center;
+    }
 
-.register-card::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
+    .register-card .row {
+        flex-direction: column;           /* columnas apiladas */
+        gap: 0.5rem;
+    }
+
+    .register-card .col-md-6 {
+        flex: 1 1 100%;
+    }
+
+    .register-card .form-control,
+    .register-card .form-select {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .register-card::-webkit-scrollbar {
+        width: 6px;                /* muy delgada */
+    }
+
+    .register-card::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.3); /* blanco translúcido */
+        border-radius: 3px;        /* bordes redondeados */
+    }
+
+    .register-card::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.05); /* casi invisible */
+    }
+
+    /* Para Firefox */
+    .register-card {
+        scrollbar-width: thin;      /* estrecha */
+        scrollbar-color: rgba(255,255,255,0.3) rgba(0,0,0,0.05);
+    }
 }

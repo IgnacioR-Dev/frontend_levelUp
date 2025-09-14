@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const detalleContainer = document.getElementById("detalle-container");
     const recomendadosContainer = document.getElementById("recomendados-container");
     const carritoBadge = document.querySelector(".btn-cart .badge");
+    const filterSelect = document.getElementById("filter-category");
+    const sortSelect = document.getElementById("sort-products");
 
     // ===== Función para actualizar badge del carrito =====
     function actualizarCarritoBadge() {
@@ -77,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         detalleContainer.innerHTML = `
             <div class="row gx-4 gx-lg-5">
-                <!-- Columna izquierda: Imagen principal y mini-galería -->
                 <div class="col-lg-6">
                     <div class="card shadow-sm mb-3 detalle-card">
                         <img src="${producto.imagen}" alt="${producto.nombre}" class="card-img-top main-img">
@@ -91,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
 
-                <!-- Columna derecha: Información del producto -->
                 <div class="col-lg-6 d-flex flex-column justify-content-start">
                     <h2>${producto.nombre}</h2>
                     <p class="precio">$${producto.precio.toLocaleString("es-CL")} CLP</p>
@@ -107,21 +107,24 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        // Guardamos la imagen principal original
         const mainImg = detalleContainer.querySelector(".main-img");
         const imgPrincipal = mainImg.src;
 
-        // Mini-galería: cambiar imagen principal
         detalleContainer.querySelectorAll(".mini-card img").forEach(img => {
             img.addEventListener("click", e => {
-                if (e.target.src === imgPrincipal) {
-                    mainImg.src = imgPrincipal; // volver a la original
-                } else {
-                    mainImg.src = e.target.src;
-                }
+                mainImg.src = e.target.src === imgPrincipal ? imgPrincipal : e.target.src;
             });
         });
 
+        const btnAgregar = detalleContainer.querySelector(".btn-agregar");
+        btnAgregar.addEventListener("click", () => {
+            const cantidad = parseInt(detalleContainer.querySelector("#cantidad").value) || 1;
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            for (let i = 0; i < cantidad; i++) carrito.push(producto);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            actualizarCarritoBadge();
+            alert(`${producto.nombre} ha sido agregado al carrito.`);
+        });
     }
 
     // ===== Renderizar productos recomendados =====
@@ -156,7 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
             recomendadosContainer.appendChild(col);
         });
 
-        // Evento para ver detalle desde recomendados
         recomendadosContainer.addEventListener("click", e => {
             if (e.target.classList.contains("ver-detalle")) {
                 const idProducto = e.target.getAttribute("data-id");
@@ -167,28 +169,68 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ===== Filtros y orden catálogo =====
-    const filterSelect = document.getElementById("filter-category");
-    const sortSelect = document.getElementById("sort-products");
-
     if (catalogContainer) {
+        let productosFiltrados = [...productos];
+        let productosOriginales = [...productosFiltrados];
+
+        // Cambio de categoría
         filterSelect?.addEventListener("change", () => {
             const value = filterSelect.value;
-            renderCatalog(value === "all" ? productos : productos.filter(p => p.categoria === value));
+            productosFiltrados = value === "all" ? [...productos] : productos.filter(p => p.categoria === value);
+            productosOriginales = [...productosFiltrados];
+            if (sortSelect) sortSelect.value = "default";
+            renderCatalog(productosFiltrados);
         });
 
+        // Cambio de orden
         sortSelect?.addEventListener("change", () => {
-            let sorted = [...productos];
-            if (sortSelect.value === "low-price") sorted.sort((a, b) => a.precio - b.precio);
-            else if (sortSelect.value === "high-price") sorted.sort((a, b) => b.precio - a.precio);
-            renderCatalog(sorted);
+            if (!sortSelect) return;
+
+            if (sortSelect.value === "low-price") {
+                productosFiltrados.sort((a, b) => a.precio - b.precio);
+            } else if (sortSelect.value === "high-price") {
+                productosFiltrados.sort((a, b) => b.precio - a.precio);
+            } else {
+                productosFiltrados = [...productosOriginales];
+            }
+
+            renderCatalog(productosFiltrados);
         });
+
+        // Aplicar categoría seleccionada desde index automáticamente
+        const categoriaSeleccionada = localStorage.getItem("categoriaSeleccionada");
+        if (categoriaSeleccionada && categoriaSeleccionada !== "all") {
+            filterSelect.value = categoriaSeleccionada;
+            productosFiltrados = productos.filter(p => p.categoria === categoriaSeleccionada);
+            productosOriginales = [...productosFiltrados];
+            renderCatalog(productosFiltrados);
+
+            // Scroll a la categoría
+            setTimeout(() => {
+                const tituloCategoria = Array.from(document.querySelectorAll('#productos-container h4'))
+                    .find(h4 => h4.textContent.trim() === categoriaSeleccionada);
+
+                if (tituloCategoria) {
+                    const headerOffset = document.querySelector('header')?.offsetHeight || 0;
+                    const elementPosition = tituloCategoria.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+
+                localStorage.removeItem("categoriaSeleccionada");
+            }, 50);
+        } else {
+            productosFiltrados = [...productos];
+            productosOriginales = [...productosFiltrados];
+            renderCatalog(productosFiltrados);
+        }
     }
 
-    // ===== Inicialización =====
-    if (catalogContainer) renderCatalog(productos);
+    // ===== Inicialización detalle y recomendados =====
     if (detalleContainer) {
         renderDetalle();
         renderRecomendados();
     }
+
     actualizarCarritoBadge();
 });

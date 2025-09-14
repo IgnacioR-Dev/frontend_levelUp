@@ -15,10 +15,7 @@
 
     <!-- Google Fonts: Roboto e Irish Grover -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
-
-
 
     <title>Tienda LevelUp Gamer</title>
 </head>
@@ -29,7 +26,6 @@
             Descuento de por vida del 20% para usuarios registrados con correos de Duoc UC.
         </span>
     </div>
-
 
     <header>
         <nav class="navbar navbar-expand-md">
@@ -90,66 +86,62 @@
             </div>
         </section>
 
-
         <section class="categories-section py-5">
             <div class="container">
                 <h2 class="section-title text-center mb-4">Conoce nuestras categorías</h2>
                 <div class="row g-3">
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html?categoria=Consolas" class="category-card consola">
+                        <a href="./templates/productos.html" class="category-card consola" data-categoria="Consolas">
                             <h3 class="category-title">Consolas</h3>
                         </a>
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html?categoria=PC Gamer" class="category-card pc-gamer">
+                        <a href="./templates/productos.html" class="category-card pc-gamer" data-categoria="PC Gamer">
                             <h3 class="category-title">PC Gamer</h3>
                         </a>
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html?categoria=Sillas Gamer" class="category-card sillas">
+                        <a href="./templates/productos.html" class="category-card sillas" data-categoria="Sillas Gamer">
                             <h3 class="category-title">Sillas Gamer</h3>
                         </a>
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html?categoria=Accesorios" class="category-card accesorios">
+                        <a href="./templates/productos.html" class="category-card accesorios" data-categoria="Accesorios">
                             <h3 class="category-title">Accesorios</h3>
                         </a>
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html?categoria=Mouse" class="category-card mouse">
+                        <a href="./templates/productos.html" class="category-card mouse" data-categoria="Mouse">
                             <h3 class="category-title">Mouse</h3>
                         </a>
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html?categoria=MousePad" class="category-card mousepad">
+                        <a href="./templates/productos.html" class="category-card mousepad" data-categoria="MousePad">
                             <h3 class="category-title">MousePad</h3>
                         </a>
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html?categoria=Juegos de Mesa" class="category-card juegos-mesa">
+                        <a href="./templates/productos.html" class="category-card juegos-mesa" data-categoria="Juegos de Mesa">
                             <h3 class="category-title">Juegos de Mesa</h3>
                         </a>
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html?categoria=Poleras Personalizadas"
-                            class="category-card poleras">
+                        <a href="./templates/productos.html" class="category-card poleras" data-categoria="Poleras Personalizadas">
                             <h3 class="category-title">Poleras Personalizadas</h3>
                         </a>
                     </div>
 
-
                 </div>
             </div>
         </section>
-
 
     </main>
 
@@ -159,8 +151,6 @@
                 <!-- LOGO + Métodos de pago -->
                 <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
                     <h5>Métodos de Pago</h5>
-
-                    <!-- Métodos de pago con Bootstrap Icons -->
                     <div class="payment-methods d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
                         <i class="bi bi-credit-card payment-icon" title="Tarjeta de crédito"></i>
                         <i class="bi bi-wallet2 payment-icon" title="Pago con billetera"></i>
@@ -191,8 +181,6 @@
                     </div>
                 </div>
 
-
-
                 <!-- NEWSLETTER -->
                 <div class="col-12 col-md-3 text-center text-md-start">
                     <h5>Suscríbete</h5>
@@ -208,7 +196,6 @@
             <hr class="my-4">
             <p class="text-center mb-0">&copy; 2025 Level Up Gamer. Todos los derechos reservados.</p>
         </div>
-        </div>
     </footer>
 
     <!-- BOTÓN FLOTANTE WHATSAPP -->
@@ -217,7 +204,6 @@
             <i class="bi bi-whatsapp"></i>
         </a>
 
-        <!-- CUADRO DE CONFIRMACIÓN -->
         <div class="whatsapp-confirm" id="whatsapp-confirm">
             <i class="bi bi-headset"></i>
             <p>Serás redirigido a WhatsApp<br>para contactar al servicio técnico.</p>
@@ -230,9 +216,19 @@
 
     </div>
 
-
     <script src="./scripts/soporteWsp.js"></script>
     <script src="./scripts/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script para guardar la categoría seleccionada -->
+    <script>
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', e => {
+                const categoria = card.getAttribute('data-categoria');
+                if (categoria) localStorage.setItem('categoriaSeleccionada', categoria);
+            });
+        });
+    </script>
+
 </body>
 
 </html>

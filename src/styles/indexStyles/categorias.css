@@ -76,6 +76,40 @@
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
+/* Fondos individuales */
+.category-card.consola {
+    background-image: url('../../assets/img/ps5.jpg');
+}
+
+.category-card.pc-gamer {
+    background-image: url('../../assets/img/pc.jpg');
+}
+
+.category-card.sillas {
+    background-image: url('../../assets/img/sillas.webp');
+}
+
+.category-card.accesorios {
+    background-image: url('../../assets/img/accesorio.webp');
+}
+
+.category-card.mouse {
+    background-image: url('../../assets/img/mouse.webp');
+}
+
+.category-card.mousepad {
+    background-image: url('../../assets/img/mousepad.jpg');
+}
+
+.category-card.juegos-mesa {
+    background-image: url('../../assets/img/juegosmesa.jpg');
+}
+
+.category-card.poleras {
+    background-image: url('../../assets/img/poleras.webp');
+}
+
+
 
 /* ===================== MEDIA QUERIES ===================== */
 @media (max-width: 991px) {

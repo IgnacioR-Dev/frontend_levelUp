@@ -11,10 +11,8 @@
   <link rel="stylesheet" href="/src/styles/footer.css">
   <link rel="stylesheet" href="/src/styles/soporteWsp.css">
   <link rel="stylesheet" href="/src/styles/registerStyles/registerSection.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
-
   <title>Registro</title>
 </head>
 
@@ -53,11 +51,11 @@
     </nav>
   </header>
 
+  <!-- Main -->
   <main>
     <section class="register-section vh-100">
       <div class="container h-100 d-flex justify-content-center align-items-center">
         <div class="register-card p-4">
-
           <!-- Logo y título -->
           <div class="text-center mb-4">
             <img src="/src/assets/icons/logo.png" alt="Logo Tienda" class="register-logo">
@@ -68,17 +66,18 @@
           <form id="registerForm">
 
             <!-- Nombre completo -->
-            <div class="form-outline">
+            <div class="form-outline mb-3">
               <input type="text" id="fullName" class="form-control" placeholder="Nombre completo" required>
               <label class="form-label" for="fullName">Nombre completo</label>
             </div>
-            <div class="form-outline">
+
+            <div class="form-outline mb-3">
               <input type="date" id="date" class="form-control" placeholder="Fecha de nacimiento" required>
               <label class="form-label" for="date">Fecha de nacimiento</label>
             </div>
 
             <!-- Correo y Confirmación de correo -->
-            <div class="row">
+            <div class="row mb-3">
               <div class="col-md-6">
                 <div class="form-outline">
                   <input type="email" id="email" class="form-control" placeholder="Correo" required>
@@ -94,7 +93,7 @@
             </div>
 
             <!-- Contraseña y Confirmación de contraseña -->
-            <div class="row">
+            <div class="row mb-3">
               <div class="col-md-6">
                 <div class="form-outline">
                   <input type="password" id="password" class="form-control" placeholder="Contraseña" required>
@@ -103,24 +102,32 @@
               </div>
               <div class="col-md-6">
                 <div class="form-outline">
-                  <input type="password" id="confirmPassword" class="form-control" placeholder="Confirmar contraseña"
-                    required>
+                  <input type="password" id="confirmPassword" class="form-control" placeholder="Confirmar contraseña" required>
                   <label class="form-label" for="confirmPassword">Confirmar contraseña</label>
                 </div>
               </div>
             </div>
 
             <!-- Región y Comuna -->
-            <div class="row">
+            <div class="row mb-3">
               <div class="col-md-6">
                 <select id="regionSelect" class="form-select" required>
                   <option value="">Selecciona una región</option>
-                  <option value="Metropolitana">Metropolitana</option>
-                  <option value="Valparaiso">Valparaíso</option>
-                  <option value="Biobio">Biobío</option>
-                  <option value="Araucania">La Araucanía</option>
-                  <option value="LosLagos">Los Lagos</option>
-                  <option value="Atacama">Atacama</option>
+                  <option value="XV de Arica y Parinacota">XV de Arica y Parinacota</option>
+                  <option value="I de Tarapacá">I de Tarapacá</option>
+                  <option value="II de Antofagasta">II de Antofagasta</option>
+                  <option value="III de Atacama">III de Atacama</option>
+                  <option value="IV de Coquimbo">IV de Coquimbo</option>
+                  <option value="V de Valparaíso">V de Valparaíso</option>
+                  <option value="VI del Libertador General Bernardo O'Higgins">VI del Libertador General Bernardo O'Higgins</option>
+                  <option value="VII del Maule">VII del Maule</option>
+                  <option value="VIII del Biobío">VIII del Biobío</option>
+                  <option value="IX de la Araucanía">IX de la Araucanía</option>
+                  <option value="XIV de los Ríos">XIV de los Ríos</option>
+                  <option value="X de los Lagos">X de los Lagos</option>
+                  <option value="XI Aysén del General Carlos Ibáñez del Campo">XI Aysén del General Carlos Ibáñez del Campo</option>
+                  <option value="XII de Magallanes y Antártica Chilena">XII de Magallanes y Antártica Chilena</option>
+                  <option value="Metropolitana de Santiago">Metropolitana de Santiago</option>
                 </select>
               </div>
               <div class="col-md-6">
@@ -141,16 +148,12 @@
     </section>
   </main>
 
-
   <!-- Footer -->
   <footer class="footer-section text-white">
     <div class="container py-5">
       <div class="row align-items-start">
-        <!-- LOGO + Métodos de pago -->
         <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
           <h5>Métodos de Pago</h5>
-
-          <!-- Métodos de pago con Bootstrap Icons -->
           <div class="payment-methods d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
             <i class="bi bi-credit-card payment-icon" title="Tarjeta de crédito"></i>
             <i class="bi bi-wallet2 payment-icon" title="Pago con billetera"></i>
@@ -158,8 +161,6 @@
             <i class="bi bi-cash-stack payment-icon" title="Redcompra/Débito"></i>
           </div>
         </div>
-
-        <!-- ENLACES RÁPIDOS -->
         <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
           <h5>Enlaces Rápidos</h5>
           <ul class="list-unstyled footer-links">
@@ -170,8 +171,6 @@
             <li><a href="contacto.html">Contacto</a></li>
           </ul>
         </div>
-
-        <!-- REDES SOCIALES -->
         <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
           <h5>Síguenos</h5>
           <div class="social-icons d-flex justify-content-center justify-content-md-start gap-3 mt-2">
@@ -180,8 +179,6 @@
             <a href="#"><i class="bi bi-youtube"></i></a>
           </div>
         </div>
-
-        <!-- NEWSLETTER -->
         <div class="col-12 col-md-3 text-center text-md-start">
           <h5>Suscríbete</h5>
           <p>Recibe ofertas exclusivas y novedades en tu correo.</p>
@@ -191,34 +188,30 @@
           </form>
         </div>
       </div>
-
       <hr class="my-4">
       <p class="text-center mb-0">&copy; 2025 Level Up Gamer. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <div class="whatsapp-container">
-        <a href="#" class="whatsapp-float" id="whatsapp-btn" aria-label="Soporte Técnico">
-            <i class="bi bi-whatsapp"></i>
-        </a>
-
-        <!-- CUADRO DE CONFIRMACIÓN -->
-        <div class="whatsapp-confirm" id="whatsapp-confirm">
-            <i class="bi bi-headset"></i>
-            <p>Serás redirigido a WhatsApp<br>para contactar al servicio técnico.</p>
-            <div class="actions">
-                <button id="cancel-btn" class="btn btn-secondary">Cancelar</button>
-                <a href="https://wa.me/56912345678?text=Hola,%20necesito%20soporte%20técnico" target="_blank"
-                    id="continue-btn" class="btn btn-success">Continuar</a>
-            </div>
-        </div>
-
+  <!-- WhatsApp flotante -->
+  <div class="whatsapp-container">
+    <a href="#" class="whatsapp-float" id="whatsapp-btn" aria-label="Soporte Técnico">
+      <i class="bi bi-whatsapp"></i>
+    </a>
+    <div class="whatsapp-confirm" id="whatsapp-confirm">
+      <i class="bi bi-headset"></i>
+      <p>Serás redirigido a WhatsApp<br>para contactar al servicio técnico.</p>
+      <div class="actions">
+        <button id="cancel-btn" class="btn btn-secondary">Cancelar</button>
+        <a href="https://wa.me/56912345678?text=Hola,%20necesito%20soporte%20técnico" target="_blank"
+          id="continue-btn" class="btn btn-success">Continuar</a>
+      </div>
     </div>
+  </div>
 
 
-    <script src="/src/scripts/soporteWsp.js"></script>
   <script src="/src/scripts/formRegister.js"></script>
+  <script src="/src/scripts/soporteWsp.js"></script>
   <script src="/src/scripts/js/bootstrap.bundle.min.js"></script>
 </body>
 

@@ -1,6 +1,6 @@
 /* ===================== BASE.CSS ===================== */
 
-/* 1️⃣ Reset / Normalización básica */
+/* Reset / normalización básica */
 *,
 *::before,
 *::after {
@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Fuente base */
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
@@ -22,7 +22,7 @@ body {
     background-color: #0f0f0f;
 }
 
-/* 2️⃣ Enlaces */
+/* Enlaces */
 a {
     text-decoration: none;
     color: inherit;
@@ -30,23 +30,23 @@ a {
 }
 
 a:hover {
-    color: #28a745; /* color hover por defecto */
+    color: #28a745;
 }
 
-/* 3️⃣ Imágenes */
+/* Imágenes */
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* 4️⃣ Listas */
+/* Listas */
 ul,
 ol {
     list-style: none;
 }
 
-/* 5️⃣ Botones base */
+/* Botones base */
 button,
 .btn {
     font-family: inherit;
@@ -61,19 +61,19 @@ button:focus,
     outline: none;
 }
 
-/* 6️⃣ Encabezados */
+/* Encabezados */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
-/* 7️⃣ Párrafos */
+/* Párrafos */
 p {
     margin-bottom: 1rem;
 }
 
-/* 8️⃣ Contenedores y secciones */
+/* Contenedores */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -81,7 +81,7 @@ p {
     margin-right: auto;
 }
 
-/* 9️⃣ Utilidades de espaciado */
+/* Espaciado */
 .mt-1 { margin-top: 0.25rem; }
 .mt-2 { margin-top: 0.5rem; }
 .mt-3 { margin-top: 1rem; }
@@ -106,7 +106,7 @@ p {
 .pb-4 { padding-bottom: 1.5rem; }
 .pb-5 { padding-bottom: 3rem; }
 
-/* 10️⃣ Flexbox y utilidades */
+/* Flexbox */
 .d-flex { display: flex; }
 .flex-column { flex-direction: column; }
 .flex-row { flex-direction: row; }
@@ -116,22 +116,22 @@ p {
 .gap-2 { gap: 0.5rem; }
 .gap-3 { gap: 1rem; }
 
-/* 11️⃣ Sombra ligera */
+/* Sombra */
 .shadow {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 12️⃣ Bordes y radios */
+/* Bordes */
 .rounded {
     border-radius: 0.5rem;
 }
 
-/* 13️⃣ Transiciones generales */
+/* Transiciones */
 .transition {
     transition: all 0.3s ease;
 }
 
-/* 14️⃣ Scrollbars personalizados (opcional) */
+/* Scrollbars */
 ::-webkit-scrollbar {
     width: 10px;
 }

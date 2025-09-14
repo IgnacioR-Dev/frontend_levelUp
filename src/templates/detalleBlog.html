@@ -39,13 +39,15 @@
                         <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
                     </ul>
                     <div class="header-actions gap-3">
-                        <a href="login.html" class="btn-login">
+                        <!-- Botón de login/cerrar sesión -->
+                        <a href="./templates/login.html" id="btn-login" class="btn-login">
                             Iniciar Sesión
                             <i class="bi bi-box-arrow-in-right"></i>
                         </a>
-                        <a href="#" class="btn-cart">
+                        <!-- Carrito con badge -->
+                        <a href="carrito.html" class="btn-cart">
                             <i class="bi bi-cart-fill"></i>
-                            <span class="badge">0</span>
+                            <span class="badge" id="carrito-badge">0</span>
                         </a>
                     </div>
                 </div>
@@ -131,6 +133,7 @@
         </div>
     </div>
 
+    <script src="../scripts/global.js"></script>
     <script src="../scripts/soporteWsp.js"></script>
     <script src="../scripts/formRegister.js"></script>
     <script src="../scripts/js/bootstrap.bundle.min.js"></script>

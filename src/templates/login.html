@@ -39,13 +39,15 @@
                         <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
                     </ul>
                     <div class="header-actions gap-3">
-                        <a href="login.html" class="btn-login">
+                        <!-- Botón de login/cerrar sesión -->
+                        <a href="./templates/login.html" id="btn-login" class="btn-login">
                             Iniciar Sesión
                             <i class="bi bi-box-arrow-in-right"></i>
                         </a>
-                        <a href="#" class="btn-cart">  
+                        <!-- Carrito con badge -->
+                        <a href="carrito.html" class="btn-cart">
                             <i class="bi bi-cart-fill"></i>
-                            <span class="badge">0</span>
+                            <span class="badge" id="carrito-badge">0</span>
                         </a>
                     </div>
                 </div>
@@ -55,58 +57,51 @@
 
     <main>
         <section class="login-section py-5">
-            <div class="container-fluid">
-                <div class="row justify-content-center align-items-center">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
 
-                    <!-- Columna con formulario -->
-                    <div class="col-md-6 col-lg-5">
-                        <div class="card login-card p-4">
-                            <!-- Logo centrado -->
-                            <div class="text-center mb-4">
-                                <img src="../assets/icons/logo.png" alt="Logo Tienda" class="login-logo">
-                            </div>
-
-                            <h3 class="text-center mb-4 fw-bold">Inicia Sesión</h3>
-
-                            <form>
-                                <!-- Email -->
-                                <div class="form-outline mb-3">
-                                    <input type="email" id="loginEmail" class="form-control form-control-lg"
-                                        placeholder="Ingresa tu correo" required />
-                                    <label class="form-label" for="loginEmail">Correo electrónico</label>
-                                </div>
-
-                                <!-- Password -->
-                                <div class="form-outline mb-3">
-                                    <input type="password" id="loginPassword" class="form-control form-control-lg"
-                                        placeholder="Ingresa tu contraseña" required />
-                                    <label class="form-label" for="loginPassword">Contraseña</label>
-                                </div>
-
-                                <!-- Opciones -->
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="rememberMe" />
-                                        <label class="form-check-label" for="rememberMe">Recuérdame</label>
-                                    </div>
-                                </div>
-
-                                <!-- Botón -->
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary btn-lg">Ingresar</button>
-                                </div>
-
-                                <!-- Registro -->
-                                <p class="small fw-bold text-center mt-3">
-                                    ¿No tienes una cuenta?
-                                    <a href="registro.html" class="link-primary">Regístrate</a>
-                                </p>
-                            </form>
-                        </div>
+            <!-- Columna con formulario -->
+            <div class="col-md-6 col-lg-5">
+                <div class="card login-card p-4">
+                    <!-- Logo centrado -->
+                    <div class="text-center mb-4">
+                        <img src="../assets/icons/logo.png" alt="Logo Tienda" class="login-logo">
                     </div>
+
+                    <h3 class="text-center mb-4 fw-bold">Inicia Sesión</h3>
+
+                    <form id="loginForm">
+                        <!-- Email -->
+                        <div class="form-outline mb-3">
+                            <input type="email" id="loginEmail" class="form-control form-control-lg"
+                                placeholder="Ingresa tu correo" required maxlength="100" />
+                            <label class="form-label" for="loginEmail">Correo electrónico</label>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-outline mb-3">
+                            <input type="password" id="loginPassword" class="form-control form-control-lg"
+                                placeholder="Ingresa tu contraseña" required minlength="4" maxlength="10" />
+                            <label class="form-label" for="loginPassword">Contraseña</label>
+                        </div>
+                        
+                        <!-- Botón -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Ingresar</button>
+                        </div>
+
+                        <!-- Registro -->
+                        <p class="small fw-bold text-center mt-3">
+                            ¿No tienes una cuenta?
+                            <a href="registro.html" class="link-">Regístrate</a>
+                        </p>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
     </main>
 
 
@@ -189,9 +184,19 @@
 
     </div>
 
-
+    
     <script src="../scripts/soporteWsp.js"></script>
     <script src="../scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/autenticacion.js"></script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", e => {
+            e.preventDefault();
+            const email = document.getElementById("loginEmail").value.trim();
+            const password = document.getElementById("loginPassword").value.trim();
+            login(email, password);
+        });
+    </script>
+
 </body>
 
 </html>

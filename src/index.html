@@ -30,7 +30,7 @@
     <header>
         <nav class="navbar navbar-expand-md">
             <div class="container">
-                <a class="navbar-brand">
+                <a class="navbar-brand" href="index.html">
                     <img src="./assets/icons/logo.png" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMinimal"
@@ -46,19 +46,22 @@
                         <li class="nav-item"><a class="nav-link" href="./templates/contacto.html">Contacto</a></li>
                     </ul>
                     <div class="header-actions gap-3">
-                        <a href="./templates/login.html" class="btn-login">
+                        <!-- Botón de login/cerrar sesión -->
+                        <a href="./templates/login.html" id="btn-login" class="btn-login">
                             Iniciar Sesión
                             <i class="bi bi-box-arrow-in-right"></i>
                         </a>
-                        <a href="#" class="btn-cart">
+                        <!-- Carrito con badge -->
+                        <a href="./templates/carrito.html" class="btn-cart">
                             <i class="bi bi-cart-fill"></i>
-                            <span class="badge">0</span>
+                            <span class="badge" id="carrito-badge">0</span>
                         </a>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
+
 
     <main>
 
@@ -110,7 +113,8 @@
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html" class="category-card accesorios" data-categoria="Accesorios">
+                        <a href="./templates/productos.html" class="category-card accesorios"
+                            data-categoria="Accesorios">
                             <h3 class="category-title">Accesorios</h3>
                         </a>
                     </div>
@@ -128,13 +132,15 @@
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html" class="category-card juegos-mesa" data-categoria="Juegos de Mesa">
+                        <a href="./templates/productos.html" class="category-card juegos-mesa"
+                            data-categoria="Juegos de Mesa">
                             <h3 class="category-title">Juegos de Mesa</h3>
                         </a>
                     </div>
 
                     <div class="col-6 col-md-3">
-                        <a href="./templates/productos.html" class="category-card poleras" data-categoria="Poleras Personalizadas">
+                        <a href="./templates/productos.html" class="category-card poleras"
+                            data-categoria="Poleras Personalizadas">
                             <h3 class="category-title">Poleras Personalizadas</h3>
                         </a>
                     </div>
@@ -216,6 +222,7 @@
 
     </div>
 
+    <script src="./scripts/global.js"></script>
     <script src="./scripts/soporteWsp.js"></script>
     <script src="./scripts/js/bootstrap.bundle.min.js"></script>
 

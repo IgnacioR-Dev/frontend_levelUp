@@ -1,16 +1,11 @@
+// product.js
+
 document.addEventListener("DOMContentLoaded", () => {
     const catalogContainer = document.getElementById("productos-container");
     const detalleContainer = document.getElementById("detalle-container");
     const recomendadosContainer = document.getElementById("recomendados-container");
-    const carritoBadge = document.querySelector(".btn-cart .badge");
     const filterSelect = document.getElementById("filter-category");
     const sortSelect = document.getElementById("sort-products");
-
-    // ===== Función para actualizar badge del carrito =====
-    function actualizarCarritoBadge() {
-        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        carritoBadge.textContent = carrito.length;
-    }
 
     // ===== Renderizar catálogo =====
     function renderCatalog(productosArray) {
@@ -28,35 +23,49 @@ document.addEventListener("DOMContentLoaded", () => {
             const row = document.createElement("div");
             row.className = "row row-cols-1 row-cols-md-3 g-4 mb-5";
 
-            productosArray
-                .filter(p => p.categoria === cat)
-                .forEach(producto => {
-                    const col = document.createElement("div");
-                    col.className = "col";
-                    col.innerHTML = `
-                        <div class="card h-100 shadow-sm" data-category="${producto.categoria}" data-price="${producto.precio}">
-                            <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">${producto.nombre}</h5>
-                                <p class="card-text">$${producto.precio.toLocaleString("es-CL")} CLP</p>
-                            </div>
-                            <div class="card-footer text-center">
-                                <button class="btn ver-detalle" data-id="${producto.id}">Ver Detalle</button>
-                            </div>
+            productosArray.filter(p => p.categoria === cat).forEach(producto => {
+                const col = document.createElement("div");
+                col.className = "col";
+                col.innerHTML = `
+                    <div class="card h-100 shadow-sm" data-category="${producto.categoria}" data-price="${producto.precio}">
+                        <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">${producto.nombre}</h5>
+                            <p class="card-text">$${producto.precio.toLocaleString("es-CL")} CLP</p>
                         </div>
-                    `;
-                    row.appendChild(col);
-                });
+                        <div class="card-footer text-center d-flex justify-content-between">
+                            <button class="btn ver-detalle" data-id="${producto.id}">Ver Detalle</button>
+                            <button class="btn btn-success add-to-cart" 
+                                data-id="${producto.id}" 
+                                data-name="${producto.nombre}" 
+                                data-price="${producto.precio}" 
+                                data-img="${producto.imagen}">
+                                <i class="bi bi-cart-fill"></i> Añadir
+                            </button>
+                        </div>
+                    </div>
+                `;
+                row.appendChild(col);
+            });
 
             catalogContainer.appendChild(row);
         });
 
-        // Evento para ver detalle desde catálogo
+        // Delegación de eventos para ver detalle y agregar al carrito
         catalogContainer.addEventListener("click", e => {
             if (e.target.classList.contains("ver-detalle")) {
                 const idProducto = e.target.getAttribute("data-id");
                 localStorage.setItem("productoSeleccionado", idProducto);
                 window.location.href = "detalleProducto.html";
+            } else if (e.target.closest(".add-to-cart")) {
+                const btn = e.target.closest(".add-to-cart");
+                const product = {
+                    id: btn.dataset.id,
+                    name: btn.dataset.name,
+                    price: parseFloat(btn.dataset.price),
+                    imagen: btn.dataset.img
+                };
+                window.addToCart(product);
             }
         });
     }
@@ -116,14 +125,17 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
+        // Botón agregar al carrito
         const btnAgregar = detalleContainer.querySelector(".btn-agregar");
         btnAgregar.addEventListener("click", () => {
             const cantidad = parseInt(detalleContainer.querySelector("#cantidad").value) || 1;
-            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-            for (let i = 0; i < cantidad; i++) carrito.push(producto);
-            localStorage.setItem("carrito", JSON.stringify(carrito));
-            actualizarCarritoBadge();
-            alert(`${producto.nombre} ha sido agregado al carrito.`);
+            const product = {
+                id: producto.id,
+                name: producto.nombre,
+                price: producto.precio,
+                imagen: producto.imagen
+            };
+            window.addToCart(product, cantidad);
         });
     }
 
@@ -173,7 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let productosFiltrados = [...productos];
         let productosOriginales = [...productosFiltrados];
 
-        // Cambio de categoría
         filterSelect?.addEventListener("change", () => {
             const value = filterSelect.value;
             productosFiltrados = value === "all" ? [...productos] : productos.filter(p => p.categoria === value);
@@ -182,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
             renderCatalog(productosFiltrados);
         });
 
-        // Cambio de orden
         sortSelect?.addEventListener("change", () => {
             if (!sortSelect) return;
 
@@ -205,7 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
             productosOriginales = [...productosFiltrados];
             renderCatalog(productosFiltrados);
 
-            // Scroll a la categoría
             setTimeout(() => {
                 const tituloCategoria = Array.from(document.querySelectorAll('#productos-container h4'))
                     .find(h4 => h4.textContent.trim() === categoriaSeleccionada);
@@ -231,6 +240,4 @@ document.addEventListener("DOMContentLoaded", () => {
         renderDetalle();
         renderRecomendados();
     }
-
-    actualizarCarritoBadge();
 });

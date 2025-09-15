@@ -1,36 +1,52 @@
 // global.js
-
 document.addEventListener("DOMContentLoaded", () => {
 
     // ===== Obtener usuario actual =====
     function getCurrentUser() {
-        return JSON.parse(localStorage.getItem("currentUser"));
+        try {
+            return JSON.parse(localStorage.getItem("currentUser"));
+        } catch (err) { return null; }
     }
 
     // ===== Carrito por usuario =====
     function getUserCart() {
         const user = getCurrentUser();
-        if (!user) return [];
+        if (!user) return []; // si no hay user devolvemos array vacío
         const cartKey = `cart_${user.email}`;
-        return JSON.parse(localStorage.getItem(cartKey)) || [];
+        try {
+            return JSON.parse(localStorage.getItem(cartKey)) || [];
+        } catch (err) {
+            return [];
+        }
     }
 
     function setUserCart(cart) {
         const user = getCurrentUser();
-        if (!user) return;
+        if (!user) {
+            // Si quieres soportar carrito para usuarios anónimos puedes guardar en 'cart' aquí.
+            return;
+        }
         const cartKey = `cart_${user.email}`;
         localStorage.setItem(cartKey, JSON.stringify(cart));
         updateCartBadge();
     }
 
-    // ===== Añadir producto al carrito =====
+    function clearUserCart() {
+        const user = getCurrentUser();
+        if (!user) return;
+        const cartKey = `cart_${user.email}`;
+        localStorage.removeItem(cartKey);
+        updateCartBadge();
+    }
+
+    // ===== Añadir producto al carrito (expuesto) =====
     window.addToCart = function(product, cantidad = 1) {
         const cart = getUserCart();
         const index = cart.findIndex(p => p.id === product.id);
-        if(index > -1){
+        if (index > -1) {
             cart[index].quantity += cantidad;
         } else {
-            cart.push({...product, quantity: cantidad});
+            cart.push({ ...product, quantity: cantidad });
         }
         setUserCart(cart);
         alert(`${cantidad} unidad(es) de ${product.name} agregadas al carrito.`);
@@ -38,34 +54,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== Actualizar badge =====
     function updateCartBadge() {
-        const badge = document.getElementById('carrito-badge');
+        const badge = document.getElementById('carrito-badge') || document.querySelector('.btn-cart .badge');
         const cart = getUserCart();
-        const total = cart.reduce((acc, p) => acc + p.quantity, 0);
-        if(badge) badge.textContent = total;
+        const total = cart.reduce((acc, p) => acc + (p.quantity || 0), 0);
+        if (badge) badge.textContent = total;
     }
 
+    // Exponer helpers globalmente para que otras páginas puedan llamarlos
+    window._getCurrentUser = getCurrentUser;
+    window._getUserCart = getUserCart;
+    window._setUserCart = setUserCart;
+    window._clearUserCart = clearUserCart;
+    window._updateCartBadge = updateCartBadge;
+
+    // Llamada inicial
     updateCartBadge();
 
     // ===== Determinar rutas según ubicación de la página =====
     const isTemplate = location.pathname.includes("/templates/");
     const loginHref = isTemplate ? "login.html" : "templates/login.html";
 
-
     // ===== Actualizar botón de login =====
     const btnLogin = document.querySelector(".btn-login");
     const currentUser = getCurrentUser();
 
-    if(btnLogin){
-        if(currentUser){
+    if (btnLogin) {
+        if (currentUser) {
             btnLogin.innerHTML = `Cerrar Sesión <i class="bi bi-box-arrow-right"></i>`;
             btnLogin.href = "#";
             btnLogin.addEventListener("click", () => {
                 localStorage.removeItem("currentUser");
-                window.location.href = loginHref; // redirige correctamente al index
+                // opcional: cuando se cierra sesión también limpiar badge/local state si quieres
+                window._updateCartBadge();
+                window.location.href = loginHref;
             });
         } else {
             btnLogin.innerHTML = `Iniciar Sesión <i class="bi bi-box-arrow-in-right"></i>`;
-            btnLogin.href = loginHref; // abre login correctamente
+            btnLogin.href = loginHref;
         }
     }
 

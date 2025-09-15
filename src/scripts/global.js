@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
             btnLogin.href = "#";
             btnLogin.addEventListener("click", () => {
                 localStorage.removeItem("currentUser");
-                // opcional: cuando se cierra sesión también limpiar badge/local state si quieres
+                // opcional: cuando se cierra sesión también limpiar badge/local state
                 window._updateCartBadge();
                 window.location.href = loginHref;
             });

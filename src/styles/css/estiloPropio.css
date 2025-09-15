@@ -1,0 +1,57 @@
+/* Definir colores personalizados para la tienda */
+/*Color de fondo*/
+.bg-purple {
+  background-color: #800080 !important; 
+}
+.bg-blue {
+  background-color: #6f42c1 !important; 
+}
+.bg-gray {
+  background-color: #2c2c2c !important; 
+}
+.bg-darkpurple {
+  background-color: #160333 !important; 
+}
+
+
+
+
+/* Definir Hover del boton*/
+.btn-grow {
+  transition: transform 0.3s ease; /* suaviza el efecto */
+}
+
+.btn-grow:hover {
+  transform: scale(1.1); /* agranda 10% al pasar el mouse */
+}
+        
+/* Definir tamaño fijo para vista previa de imagen*/
+.img-preview {
+    max-width: 200px;
+    max-height: 200px; 
+    display: none; 
+    border: 2px solid #6f42c1;
+    border-radius: 8px;  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-preview:hover {
+    transform: scale(1.1);      /* zoom al pasar el mouse */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* sombra suave */
+}
+
+
+/* Corregir posicion del footer*/
+html, body {
+    height: 100%; /* ocupar toda la pantalla */
+    margin: 0;    /* quitar márgenes */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* hace que el contenido crezca y empuje el footer abajo */
+}

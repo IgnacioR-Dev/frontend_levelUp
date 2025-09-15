@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear nuevo Producto</title>
+  <!-- Latest compiled and minified CSS -->
+  <link href="../styles/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Latest compiled JavaScript -->
+  <script src="../scripts/js/bootstrap.bundle.min.js"></script>
+  <!-- Importar estilo propios -->
+  <link rel="stylesheet" href="../styles/css/estiloPropio.css">
+  <link rel="stylesheet" href="../styles/footer.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="./styles/indexStyles/hero.css">
+  <link rel="stylesheet" href="./styles/indexStyles/categorias.css">
+  <!-- Google Fonts: Roboto e Irish Grover -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+  <!-- Icono de pestaña -->
+  <link rel="icon" type="image/x-icon" href="../assets/icon/icon.ico">
+  <style>
+    .img-preview {
+      max-width: 150px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Banner -->
+  <div class="promo-banner">
+    <span class="promo-text"></span>
+  </div>
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-md">
+      <div class="container">
+        <a class="navbar-brand">
+          <img src="../assets/icon/logo.png" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMinimal"
+          aria-controls="navbarMinimal" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMinimal">
+          <ul class="navbar-nav mx-auto gap-3">
+            <li class="nav-item"><a class="nav-link" href="administrador.html">Panel Administrador</a></li>
+          </ul>
+          <!-- Dropdown del usuario a la derecha -->
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Administrador
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="mostrarUsuarios.html">Editar Perfiles</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenido -->
+  <main
+    style="background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');">
+    <div class="container p-5 bg-darkpurple">
+      <div class="row justify-content-center">
+        <div class="col-sm-8">
+          <div class="shadow rounded">
+            <div class="p-3 bg-blue rounded-top">
+              <h1 class="text-center text-white">Añadir nuevo Producto</h1>
+            </div>
+            <!-- Formulario -->
+            <form id="formProducto" class="p-3 bg-gray ">
+
+              <!-- Código -->
+              <div class="mb-3">
+                <label for="codigo" class="form-label">Código de Producto</label>
+                <input type="text" class="form-control" id="codigo" required>
+              </div>
+
+              <!-- Nombre -->
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre del Producto</label>
+                <input type="text" class="form-control" id="nombre" required>
+              </div>
+
+              <!-- Precio -->
+              <div class="mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="precio" step="0.01" required>
+              </div>
+
+              <!-- Cantidad -->
+              <div class="mb-3">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="cantidad" min="0" required>
+              </div>
+
+              <!-- Categoría -->
+              <div class="mb-3">
+                <label for="categoria" class="form-label">Categoría</label>
+                <select class="form-select" id="categoria" required>
+                  <option value="" disabled selected>Seleccione una categoría</option>
+                  <option value="accesorios">Accesorios</option>
+                  <option value="consolas">Consolas</option>
+                  <option value="computadores">Computadores Gamer</option>
+                  <option value="juegos">Juegos de Mesa</option>
+                  <option value="mouse">Mouse</option>
+                  <option value="mousepad">Mousepad</option>
+                  <option value="poleras">Poleras Personalizadas</option>
+                  <option value="polerones">Polerones Gamer Personalizados</option>
+                  <option value="sillas">Sillas Gamers</option>
+                </select>
+              </div>
+
+              <!-- Imagen -->
+              <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen del Producto</label>
+                <input type="file" class="form-control" id="imagen" accept="image/*" required>
+                <div class="mt-2">
+                  <img id="previewImagen" class="img-preview" alt="Vista previa">
+                </div>
+              </div>
+
+              <!-- Descripción -->
+              <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="descripcion" rows="4" required></textarea>
+              </div>
+
+              <!-- Reseña -->
+              <div class="mb-3">
+                <label for="resenia" class="form-label">Reseña</label>
+                <select class="form-select" id="resenia">
+                  <option value="" disabled selected>Seleccione una reseña</option>
+                  <option value="rese1">Reseña 1</option>
+                  <option value="rese2">Reseña 2</option>
+                  <option value="rese3">Reseña 3</option>
+                </select>
+              </div>
+
+              <!-- Vista previa reseña -->
+              <div class="mb-3" id="previewReseniaContainer" style="display:none;">
+                <label class="form-label">Vista previa de la reseña</label>
+                <textarea class="form-control" id="previewResenia" rows="4" readonly></textarea>
+              </div>
+
+              <!-- Botón -->
+              <div class="text-center">
+                <input type="submit" class="btn bg-blue btn-grow btn-md px-5" value="Añadir">
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+
+  <footer class="footer-section text-white">
+    <div class="container py-5">
+      <div class="row align-items-start">
+        <!-- ENLACES RÁPIDOS -->
+        <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
+          <h5>Enlaces Rápidos</h5>
+          <ul class="list-unstyled footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="./templates/productos.html">Productos</a></li>
+            <li><a href="./templates/nosotros.html">Nosotros</a></li>
+            <li><a href="./templates/blogs.html">Blogs</a></li>
+            <li><a href="./templates/contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <!-- NEWSLETTER -->
+        <div class="col-12 col-md-3 text-center text-md-start">
+          <h5>Suscríbete</h5>
+          <p>Recibe ofertas exclusivas y novedades en tu correo.</p>
+          <form class="flex flex-column flex-sm-row gap-2" action="#" method="POST">
+            <input type="email" class="form-control w-100" placeholder="Correo electrónico" required>
+            <button type="submit" class="btn btn-primary my-2 w-100">Suscribirse</button>
+          </form>
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+      <p class="text-center mb-0">&copy; 2025 Level Up Gamer. Todos los derechos reservados.</p>
+    </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const form = document.getElementById("formProducto");
+    const inputImagen = document.getElementById("imagen");
+    const previewImagen = document.getElementById("previewImagen");
+    const selectResenia = document.getElementById("resenia");
+    const previewReseniaContainer = document.getElementById("previewReseniaContainer");
+    const previewResenia = document.getElementById("previewResenia");
+
+    // Vista previa de imagen
+    inputImagen.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        previewImagen.src = URL.createObjectURL(file);
+        previewImagen.style.display = "block";
+      }
+    });
+
+    // Vista previa de reseña
+    const reseñas = {
+      rese1: "Excelente producto, muy recomendado.",
+      rese2: "Buen producto, cumple con las expectativas.",
+      rese3: "Producto regular, algunos detalles a mejorar."
+    };
+
+    selectResenia.addEventListener("change", function () {
+      const valor = this.value;
+      if (reseñas[valor]) {
+        previewResenia.value = reseñas[valor];
+        previewReseniaContainer.style.display = "block";
+      } else {
+        previewResenia.value = "";
+        previewReseniaContainer.style.display = "none";
+      }
+    });
+
+    // Guardar producto
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const file = inputImagen.files[0];
+      if (!file) {
+        alert("Selecciona una imagen");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        let productos = JSON.parse(localStorage.getItem("productos")) || [];
+
+        const nuevoProducto = {
+          codigo: document.getElementById("codigo").value,
+          nombre: document.getElementById("nombre").value,
+          precio: parseFloat(document.getElementById("precio").value),
+          cantidad: parseInt(document.getElementById("cantidad").value) || 0,
+          categoria: document.getElementById("categoria").value,
+          descripcion: document.getElementById("descripcion").value,
+          resenia: selectResenia.value,
+          imagen: event.target.result
+        };
+
+        productos.push(nuevoProducto);
+        localStorage.setItem("productos", JSON.stringify(productos));
+
+        alert("✅ Producto añadido con éxito");
+
+        // Redirigir a mostrarProductos
+        window.location.href = "mostrarProductos.html";
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+
+</html>

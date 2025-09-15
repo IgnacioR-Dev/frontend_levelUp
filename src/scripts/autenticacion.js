@@ -57,7 +57,7 @@ function login(email, password) {
         if (user.role === "cliente") {
             window.location.href = "../index.html";
         } else if (user.role === "administrador") {
-            window.location.href = "administrador.html";
+            window.location.href = "./templates/administrador.html";
         }
 
         return true;

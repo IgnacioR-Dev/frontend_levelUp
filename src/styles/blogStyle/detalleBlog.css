@@ -1,0 +1,98 @@
+#blog-detalle {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: transparent; /* Quitamos fondo de tarjeta */
+    color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Contenedor header: imagen izquierda, texto derecha */
+.blog-header-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Imagen principal */
+.blog-header-img {
+    width: 45%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0; /* quitar redondeo */
+}
+
+/* Texto al lado derecho */
+.blog-header-text {
+    flex: 1;
+}
+
+.blog-header-text h2 {
+    font-family: 'Finger Paint', cursive;
+    font-size: 2.8rem;
+    color: #d4e308;
+    margin-bottom: 1rem;
+}
+
+.blog-header-text p {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+/* Contenido debajo */
+.blog-body {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+/* Encabezados internos */
+.blog-body h3{
+    color: #f3f372;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Listas */
+.blog-body ul, .blog-body ol {
+    padding-left: 1.8rem;
+    margin-bottom: 1.6rem;
+}
+
+.blog-body li {
+    margin-bottom: 0.8rem;
+}
+
+/* Imágenes dentro del contenido */
+.blog-body img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin: 1.5rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .blog-header-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .blog-header-img {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .blog-header-text h2 {
+        font-size: 2rem;
+    }
+
+    .blog-header-text p {
+        font-size: 1rem;
+    }
+}

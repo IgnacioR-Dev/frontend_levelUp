@@ -1,0 +1,30 @@
+.map-section {
+    width: 100%;
+    padding: 40px 0;
+    background-color: #1e1b27; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.map-section iframe {
+    width: 50%;
+    max-width: 600px;
+    height: 450px;
+    border: solid 20px #4000ff;
+    border-radius: 19px;
+}
+
+.section-title {
+    font-family: 'Finger Paint', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.map-logo{
+    width: 20%;
+    height: 20%;
+}

@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/soporteWsp.css">
     <link rel="stylesheet" href="../styles/cartStyle.css/carrito.css">
-
+    
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/x-icon" href="./assets/icons/logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/icon/icon.ico">
     <title>Resumen del Carrito - LevelUp Gamer</title>
 </head>
 
@@ -68,6 +68,44 @@
 
         <div class="mt-4">
             <button id="checkout" class="btn btn-primary btn-lg w-100">Finalizar Compra</button>
+        </div>
+
+
+        <!-- Modal para mensajes generales -->
+        <div class="modal fade" id="messageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="messageModalTitle">Mensaje</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="messageModalBody">
+                        <!-- El mensaje se insertará aquí -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de confirmación -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmModalTitle">Confirmar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="confirmModalBody">
+                        <!-- El mensaje de confirmación se insertará aquí -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="confirmModalYes">Sí</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 

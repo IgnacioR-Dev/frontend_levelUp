@@ -1,5 +1,3 @@
-// product.js
-
 document.addEventListener("DOMContentLoaded", () => {
     const catalogContainer = document.getElementById("productos-container");
     const detalleContainer = document.getElementById("detalle-container");

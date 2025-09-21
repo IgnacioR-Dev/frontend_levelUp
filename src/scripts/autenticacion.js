@@ -15,6 +15,61 @@ const users = [
 ];
 
 // ==========================
+// Función para mostrar modales
+// ==========================
+function showModal(title, message, isError = false) {
+    // Usar la función global si existe
+    if (typeof window._showMessage === 'function') {
+        window._showMessage(title, message);
+        return;
+    }
+    
+    // Fallback: crear modal dinámicamente si no existe
+    let modalElement = document.getElementById('messageModal');
+    
+    if (!modalElement) {
+        // Crear modal dinámicamente
+        const modalHTML = `
+        <div class="modal fade" id="messageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header ${isError ? 'bg-danger text-white' : 'bg-primary text-white'}">
+                        <h5 class="modal-title">${title}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ${message}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+        
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        modalElement = document.getElementById('messageModal');
+    } else {
+        // Actualizar modal existente
+        const modalTitle = modalElement.querySelector('.modal-title');
+        const modalBody = modalElement.querySelector('.modal-body');
+        const modalHeader = modalElement.querySelector('.modal-header');
+        
+        if (modalTitle) modalTitle.textContent = title;
+        if (modalBody) modalBody.textContent = message;
+        if (modalHeader) {
+            modalHeader.className = isError ? 
+                'modal-header bg-danger text-white' : 
+                'modal-header bg-primary text-white';
+        }
+    }
+    
+    // Mostrar el modal
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+}
+
+// ==========================
 // Validación de email
 // ==========================
 function validarEmail(email) {
@@ -39,30 +94,32 @@ function validarPassword(password) {
 // ==========================
 function login(email, password) {
     if (!validarEmail(email)) {
-        alert("Correo inválido. Debe terminar en @duoc.cl, @profesor.duoc.cl o @gmail.com y tener máximo 100 caracteres.");
+        showModal("Error de validación", "Correo inválido. Debe terminar en @duoc.cl, @profesor.duoc.cl o @gmail.com y tener máximo 100 caracteres.", true);
         return false;
     }
 
     if (!validarPassword(password)) {
-        alert("Contraseña inválida. Debe tener entre 4 y 10 caracteres.");
+        showModal("Error de validación", "Contraseña inválida. Debe tener entre 4 y 10 caracteres.", true);
         return false;
     }
 
     const user = users.find(u => u.email === email && u.password === password);
     if (user) {
         localStorage.setItem("currentUser", JSON.stringify(user));
-        alert(`Bienvenido ${user.email}`);
+        showModal("¡Bienvenido!", `Bienvenido ${user.email}`);
 
-        // Redirigir según rol
-        if (user.role === "cliente") {
-            window.location.href = "../index.html";
-        } else if (user.role === "administrador") {
-            window.location.href = "../templates/administrador.html";
-        }
+        // Redirigir según rol después de cerrar el modal
+        setTimeout(() => {
+            if (user.role === "cliente") {
+                window.location.href = "../index.html";
+            } else if (user.role === "administrador") {
+                window.location.href = "../templates/administrador.html";
+            }
+        }, 1500); // Esperar 1.5 segundos para que el usuario vea el mensaje
 
         return true;
     } else {
-        alert("Correo o contraseña incorrectos");
+        showModal("Error de acceso", "Correo o contraseña incorrectos", true);
         return false;
     }
 }
@@ -71,6 +128,23 @@ function login(email, password) {
 // Logout
 // ==========================
 function logout() {
+    // Mostrar confirmación con modal
+    if (typeof window._showConfirm === 'function') {
+        window._showConfirm("Cerrar sesión", "¿Estás seguro de que quieres cerrar sesión?")
+            .then(confirmed => {
+                if (confirmed) {
+                    performLogout();
+                }
+            });
+    } else {
+        // Fallback a confirm nativo
+        if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
+            performLogout();
+        }
+    }
+}
+
+function performLogout() {
     localStorage.removeItem("currentUser");
     window.location.href = "login.html";
 }
@@ -79,7 +153,11 @@ function logout() {
 // Obtener usuario actual
 // ==========================
 function getCurrentUser() {
-    return JSON.parse(localStorage.getItem("currentUser"));
+    try {
+        return JSON.parse(localStorage.getItem("currentUser"));
+    } catch (e) {
+        return null;
+    }
 }
 
 // ==========================
@@ -88,8 +166,10 @@ function getCurrentUser() {
 function requireRole(role) {
     const user = getCurrentUser();
     if (!user || user.role !== role) {
-        alert("No tienes permiso para acceder a esta página.");
-        window.location.href = "login.html";
+        showModal("Acceso denegado", "No tienes permiso para acceder a esta página.", true);
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 2000);
     }
 }
 
@@ -105,43 +185,49 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentUser) {
         btnLogin.innerHTML = `Cerrar Sesión <i class="bi bi-box-arrow-right"></i>`;
         btnLogin.href = "#";
-        btnLogin.addEventListener("click", () => logout());
+        
+        // Remover event listeners previos y agregar uno nuevo
+        btnLogin.replaceWith(btnLogin.cloneNode(true));
+        const newBtn = document.querySelector(".btn-login");
+        newBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            logout();
+        });
     } else {
         btnLogin.innerHTML = `Iniciar Sesión <i class="bi bi-box-arrow-in-right"></i>`;
         btnLogin.href = "login.html";
+        btnLogin.onclick = null;
     }
 });
-
-
-
 
 // ==========================
 // Valida el formulario de contacto
 // ==========================
+document.addEventListener("DOMContentLoaded", function() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+    
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const comment = document.getElementById('comment').value.trim();
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const comment = document.getElementById('comment').value.trim();
+        // Validar correo
+        const validEmail = /^(.*@duoc\.cl|.*@profesor\.duoc\.cl|.*@gmail\.com)$/i;
+        if (!validEmail.test(email)) {
+            showModal("Error de validación", 'Ingresa un correo válido (@duoc.cl, @profesor.duoc.cl o @gmail.com)', true);
+            return;
+        }
 
-    // Validar correo
-    const validEmail = /^(.*@duoc\.cl|.*@profesor\.duoc\.cl|.*@gmail\.com)$/i;
-    if (!validEmail.test(email)) {
-        alert('Ingresa un correo válido (@duoc.cl, @profesor.duoc.cl o @gmail.com)');
-        return;
-    }
+        if(name === "" || comment === "") {
+            showModal("Error de validación", 'Por favor completa todos los campos requeridos.', true);
+            return;
+        }
 
-    if(name === "" || comment === "") {
-        alert('Por favor completa todos los campos requeridos.');
-        return;
-    }
-
-    // Aquí se puede enviar el formulario a un backend o API
-    console.log({ name, email, comment });
-
-    // Mostrar mensaje de éxito y resetear
-    document.getElementById('successMessage').style.display = 'block';
-    this.reset();
+        // Mostrar mensaje de éxito y resetear
+        showModal("¡Éxito!", "Tu mensaje ha sido enviado correctamente. Te contactaremos pronto.");
+        this.reset();
+    });
 });

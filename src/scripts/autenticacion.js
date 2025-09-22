@@ -203,31 +203,69 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================
 // Valida el formulario de contacto
 // ==========================
-document.addEventListener("DOMContentLoaded", function() {
-    const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return;
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
 
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const comment = document.getElementById('comment').value.trim();
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-        // Validar correo
-        const validEmail = /^(.*@duoc\.cl|.*@profesor\.duoc\.cl|.*@gmail\.com)$/i;
-        if (!validEmail.test(email)) {
-            showModal("Error de validación", 'Ingresa un correo válido (@duoc.cl, @profesor.duoc.cl o @gmail.com)', true);
-            return;
-        }
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const comment = document.getElementById('comment').value.trim();
 
-        if(name === "" || comment === "") {
-            showModal("Error de validación", 'Por favor completa todos los campos requeridos.', true);
-            return;
-        }
+    // Ocultar mensajes previos con animación
+    hideMessages();
 
-        // Mostrar mensaje de éxito y resetear
-        showModal("¡Éxito!", "Tu mensaje ha sido enviado correctamente. Te contactaremos pronto.");
-        this.reset();
-    });
+    let errorMessage = '';
+
+    // Validaciones específicas
+    if (name === "" || email === "" || comment === "") {
+        errorMessage = 'Por favor completa todos los campos requeridos.';
+    } else if (!/^(.*@duoc\.cl|.*@profesor\.duoc\.cl|.*@gmail\.com)$/i.test(email)) {
+        errorMessage = 'Ingresa un correo válido (@duoc.cl, @profesor.duoc.cl o @gmail.com)';
+    }
+
+    if (errorMessage) {
+        showError(errorMessage);
+        return;
+    }
+
+    // Mostrar mensaje de éxito y resetear
+    showSuccess();
+    this.reset();
 });
+
+function showError(message) {
+    const errorElement = document.getElementById('errorMessage');
+    errorElement.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    errorElement.style.display = 'block';
+    errorElement.classList.add('show');
+}
+
+function showSuccess() {
+    const successElement = document.getElementById('successMessage');
+    successElement.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <span>¡Gracias! Tu mensaje ha sido enviado correctamente.</span>
+        </div>
+    `;
+    successElement.style.display = 'block';
+    successElement.classList.add('show');
+}
+
+function hideMessages() {
+    const errorElement = document.getElementById('errorMessage');
+    const successElement = document.getElementById('successMessage');
+    
+    errorElement.classList.remove('show');
+    successElement.classList.remove('show');
+    
+    setTimeout(() => {
+        errorElement.style.display = 'none';
+        successElement.style.display = 'none';
+    }, 2000);
+}

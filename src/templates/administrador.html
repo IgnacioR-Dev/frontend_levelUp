@@ -57,7 +57,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                <li><a id="btn-login" class="btn-login" href="./login.html">Cerrar sesión</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -67,49 +67,70 @@
     </header>
 
     <!-- Contenido -->
-    <main
+    <main class="d-flex"
         style="background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');">
-        <!--Tarjetas-->
-        <div class="container bg-darkpurple">
-            <div class="p-3 text-white text-center ">
-                <h2 class="display-3">Panel de Administrador</h2>
-                <p class="lead"></p>
-            </div>
-            <div class="row p-3 justify-content-center">
-                <!-- Columna 1 -->
-                <div class="col-md-4">
-                    <div class="card m-1 rounded">
-                        <img class="card-img-top" src="../assets/img/productos01.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Productos</h4>
-                            <p class="card-text p-1">Sección dedicada al área de productos.<br>Aquí podrás agregar
-                                productos nuevos así como administrar los productos existentes.
-                            </p>
-                            <div class="text-center">
-                                <a href="admProductos.html" class="btn bg-blue text-white btn-grow">Administrar</a>
+
+        <!-- Sidebar -->
+        <aside class="sidebar bg-darkpurple p-3">
+            <h4 class="text-white">Administrador</h4>
+            <button class="btn btn-outline-light d-md-none mb-3" id="toggleSidebar">
+                ☰ Menú
+            </button>
+            <ul class="nav flex-column p-3" id="menuSidebar">
+                <li class="nav-item p-2"><a href="administrador.html" class="nav-link text-white">Panel de
+                        Administrador</a></li>
+                <li class="nav-item p-2"><a href="dashboard.html" class="nav-link text-white">Dashboard</a></li>
+                <li class="nav-item p-2"><a href="nuevoProducto.html" class="nav-link text-white">Agregar Productos</a>
+                </li>
+                <li class="nav-item p-2"><a href="mostrarProductos.html" class="nav-link text-white">Ver Productos</a>
+                </li>
+                <li class="nav-item p-2"><a href="nuevoUsuario.html" class="nav-link text-white">Crear Usuarios</a></li>
+                <li class="nav-item p-2"><a href="mostrarUsuarios.html" class="nav-link text-white">Ver Usuarios</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Contenido principal -->
+        <div class="contenido flex-grow-1">
+            <div class="container bg-darkpurple">
+                <div class="p-3 text-white text-center ">
+                    <h2 class="display-3">Panel de Administrador</h2>
+                </div>
+                <div class="row p-3 justify-content-center">
+                    <!-- Columna 1 -->
+                    <div class="col-md-4">
+                        <div class="card m-1 rounded">
+                            <img class="card-img-top" src="../assets/img/productos01.jpg" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">Productos</h4>
+                                <p class="card-text p-1">Sección dedicada al área de productos.<br>Aquí podrás agregar
+                                    productos nuevos así como administrar los productos existentes.</p>
+                                <div class="text-center">
+                                    <a href="admProductos.html" class="btn bg-blue text-white btn-grow">Administrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Columna 2 -->
+                    <div class="col-md-4">
+                        <div class="card m-1 rounded">
+                            <img class="card-img-top" src="../assets/img/usuarios01.jpg" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">Usuarios</h4>
+                                <p class="card-text p-1">Sección dedicada a los perfiles de usuarios.<br>Aquí podrás
+                                    crear
+                                    nuevos usuarios y administrar los ya existentes.</p>
+                                <div class="text-center">
+                                    <a href="admUsuarios.html" class="btn bg-blue text-white btn-grow">Administrar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Columna 2 -->
-                <div class="col-md-4">
-                    <div class="card m-1 rounded">
-                        <img class="card-img-top" src="../assets/img/usuarios01.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Usuarios</h4>
-                            <p class="card-text p-1">Sección dedicada a los perfiles de usuarios. <br>Aquí podrás crear
-                                nuevos usuarios y administrar los ya existentes.</p>
-                            <div class="text-center">
-                                <a href="admUsuarios.html" class="btn bg-blue text-white btn-grow">Administrar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-
         </div>
     </main>
+
 
     <!-- Footer -->
 
@@ -146,7 +167,21 @@
     </footer>
 
 
-    <script src="../scripts/autenticacion.js"></script>
+    </script>
+    <!-- Script para responsive sidebar -->
+    <script>
+        const boton = document.getElementById("toggleSidebar");
+        const menu = document.getElementById("menuSidebar");
+
+        boton.addEventListener("click", () => {
+            menu.classList.toggle("activo");
+        });
+    </script>
+    <!-- Scripts de globales -->
+    <script src="../scripts/js/autenticacion.js"></script>
+    <script src="../scripts/global.js"></script>
+    <script src="../scripts/soporteWsp.js"></script>
+
 </body>
 
 </html>

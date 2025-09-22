@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="../assets/icon/icon.ico">
     <title>Acerca de nosotros - LevelUp Gamer</title>
-    <link rel="icon" type="image/x-icon" href="./assets/icons/logo.png">
+
 
     <!-- Bootstrap local -->
     <link rel="stylesheet" href="../styles/css/bootstrap.min.css">
@@ -53,7 +55,7 @@
                         <!-- Carrito con badge -->
                         <a href="carrito.html" class="btn-cart">
                             <i class="bi bi-cart-fill"></i>
-                            <span class="badge" id="carrito-badge">0</span>
+                            <span class="badge" id="carrito-badge"></span>
                         </a>
                     </div>
                 </div>
@@ -140,6 +142,43 @@
                 </div>
             </div>
         </section>
+
+        <!-- Modal para mensajes generales -->
+        <div class="modal fade" id="messageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="messageModalTitle">Mensaje</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="messageModalBody">
+                        <!-- El mensaje se insertará aquí -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de confirmación -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmModalTitle">Confirmar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="confirmModalBody">
+                        <!-- El mensaje de confirmación se insertará aquí -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="confirmModalYes">Sí</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->

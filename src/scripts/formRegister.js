@@ -44,6 +44,105 @@ regionSelectEl.addEventListener("change", () => {
 });
 
 // ============================
+// Función para mostrar modales de error
+// ============================
+function showErrorModal(message) {
+    if (typeof window._showMessage === 'function') {
+        window._showMessage("Error de validación", message);
+    } else {
+        // Fallback: crear modal dinámicamente
+        let modalElement = document.getElementById('messageModal');
+        
+        if (!modalElement) {
+            const modalHTML = `
+            <div class="modal fade" id="messageModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger text-white">
+                            <h5 class="modal-title">Error de validación</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ${message}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            modalElement = document.getElementById('messageModal');
+        } else {
+            // Actualizar modal existente
+            const modalBody = modalElement.querySelector('.modal-body');
+            const modalHeader = modalElement.querySelector('.modal-header');
+            
+            if (modalBody) modalBody.textContent = message;
+            if (modalHeader) modalHeader.className = 'modal-header bg-danger text-white';
+        }
+        
+        // Mostrar el modal
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+    }
+}
+
+// ============================
+// Función para mostrar modal de éxito
+// ============================
+function showSuccessModal(message) {
+    if (typeof window._showMessage === 'function') {
+        window._showMessage("¡Registro exitoso!", message);
+    } else {
+        // Fallback: crear modal dinámicamente
+        let modalElement = document.getElementById('messageModal');
+        
+        if (!modalElement) {
+            const modalHTML = `
+            <div class="modal fade" id="messageModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title">¡Registro exitoso!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ${message}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            modalElement = document.getElementById('messageModal');
+        } else {
+            // Actualizar modal existente
+            const modalTitle = modalElement.querySelector('.modal-title');
+            const modalBody = modalElement.querySelector('.modal-body');
+            const modalHeader = modalElement.querySelector('.modal-header');
+            
+            if (modalTitle) modalTitle.textContent = "¡Registro exitoso!";
+            if (modalBody) modalBody.textContent = message;
+            if (modalHeader) modalHeader.className = 'modal-header bg-success text-white';
+        }
+        
+        // Mostrar el modal
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+        
+        // Redirigir después de cerrar el modal
+        modalElement.addEventListener('hidden.bs.modal', function () {
+            window.location.href = "../index.html";
+        });
+    }
+}
+
+// ============================
 // VALIDACIONES DEL FORM
 // ============================
 document.getElementById("registerForm").addEventListener("submit", function(e) {
@@ -64,17 +163,17 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
   // -------- VALIDACIÓN RUN --------
   const runRegex = /^[0-9]{7,8}[0-9Kk]$/;
   if (!runRegex.test(run)) {
-    alert("RUN inválido. Debe tener 7 a 8 dígitos más dígito verificador (K o número), sin puntos ni guion.");
+    showErrorModal("RUN inválido. Debe tener 7 a 8 dígitos más dígito verificador (K o número), sin puntos ni guion.");
     return;
   }
 
   // -------- VALIDACIÓN NOMBRE Y APELLIDOS --------
   if (firstName.length === 0 || firstName.length > 50) {
-    alert("Nombre inválido (máximo 50 caracteres).");
+    showErrorModal("Nombre inválido (máximo 50 caracteres).");
     return;
   }
   if (lastName.length === 0 || lastName.length > 100) {
-    alert("Apellido inválido (máximo 100 caracteres).");
+    showErrorModal("Apellido inválido (máximo 100 caracteres).");
     return;
   }
 
@@ -82,23 +181,23 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
   const allowedDomains = ["duoc.cl", "profesor.duoc.cl", "gmail.com"];
   const emailDomain = email.split("@")[1];
   if (!allowedDomains.includes(emailDomain)) {
-    alert("Correo no permitido. Debe ser @duoc.cl, @profesor.duoc.cl o @gmail.com");
+    showErrorModal("Correo no permitido. Debe ser @duoc.cl, @profesor.duoc.cl o @gmail.com");
     return;
   }
   if (email !== confirmEmail) {
-    alert("Los correos no coinciden.");
+    showErrorModal("Los correos no coinciden.");
     return;
   }
 
   // -------- VALIDACIÓN CONTRASEÑAS --------
   if (password !== confirmPassword) {
-    alert("Las contraseñas no coinciden.");
+    showErrorModal("Las contraseñas no coinciden.");
     return;
   }
 
   // -------- VALIDACIÓN FECHA NACIMIENTO (MAYOR DE 18) --------
   if (!birthDate) {
-    alert("Debe ingresar su fecha de nacimiento.");
+    showErrorModal("Debe ingresar su fecha de nacimiento.");
     return;
   }
   const today = new Date();
@@ -107,27 +206,26 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
   const monthDiff = today.getMonth() - birth.getMonth();
   const dayDiff = today.getDate() - birth.getDate();
   if (age < 18 || (age === 18 && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))) {
-    alert("Debes ser mayor de 18 años para registrarte.");
+    showErrorModal("Debes ser mayor de 18 años para registrarte.");
     return;
   }
 
   // -------- VALIDACIÓN DIRECCIÓN --------
   if (address.length === 0 || address.length > 300) {
-    alert("Dirección inválida (máximo 300 caracteres).");
+    showErrorModal("Dirección inválida (máximo 300 caracteres).");
     return;
   }
 
   // -------- VALIDACIÓN REGIÓN Y COMUNA --------
   if (!region) {
-    alert("Debes seleccionar una región.");
+    showErrorModal("Debes seleccionar una región.");
     return;
   }
   if (!comuna) {
-    alert("Debes seleccionar una comuna.");
+    showErrorModal("Debes seleccionar una comuna.");
     return;
   }
 
   // -------- SI TODO ESTÁ BIEN --------
-  alert("Registro completado. Bienvenido a LevelUp.");
-  window.location.href = "../index.html";
+  showSuccessModal("Registro completado. Bienvenido a LevelUp.");
 });

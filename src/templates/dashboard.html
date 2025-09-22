@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Productos</title>
+    <title>Dashboard</title>
     <!-- Latest compiled and minified CSS -->
     <link href="../styles/css/bootstrap.min.css" rel="stylesheet">
     <!-- Latest compiled JavaScript -->
@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
     <!-- Icono de pestaña -->
     <link rel="icon" type="image/x-icon" href="../assets/icon/icon.ico">
+
 </head>
 
 <body>
@@ -70,7 +71,6 @@
     <!-- Contenido -->
     <main class="d-flex"
         style="background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');">
-
         <!-- Sidebar -->
         <aside class="sidebar bg-darkpurple p-3">
             <h4 class="text-white">Administrador</h4>
@@ -89,48 +89,49 @@
                 </li>
             </ul>
         </aside>
-        <!--Tarjetas-->
-        <div class="container bg-darkpurple">
-            <div class="p-3 text-white text-center">
-                <h1 class="display-3">Gestion de Productos</h1>
-                <p class="lead"></p>
-            </div>
 
 
-            <div class="row p-3 justify-content-center">
-                <!-- Columna 1 -->
+
+        <!-- Contenido principal -->
+        <section class="contenido p-4 w-100">
+            <h2 class="mb-4">Panel de Ventas</h2>
+
+            <!-- Tarjetas -->
+            <div class="row mb-4">
                 <div class="col-md-4">
-                    <div class="card m-1 rounded">
-                        <img class="card-img-top" src="../assets/img/productos02.jpg" alt="Card image">
+                    <div class="card text-center bg-gray text-white">
                         <div class="card-body">
-                            <h4 class="card-title text-center">Agregar productos</h4>
-                            <p class="card-text p-1">Formulario de registro.<br>Aquí podrás añadir productos nuevos al
-                                catálogo de ventas.
-                            </p>
-                            <div class="text-center">
-                                <a href="nuevoProducto.html" class="btn bg-blue text-white btn-grow">Acceder</a>
-                            </div>
+                            <h5 class="card-title">Ventas Totales</h5>
+                            <p class="card-text fs-3">1200</p>
                         </div>
                     </div>
                 </div>
-                <!-- Columna 2 -->
+
                 <div class="col-md-4">
-                    <div class="card m-1 rounded">
-                        <img class="card-img-top" src="../assets/img/productos04.jpg" alt="Card image">
+                    <div class="card text-center bg-purple text-white">
                         <div class="card-body">
-                            <h4 class="card-title text-center">Ver productos</h4>
-                            <p class="card-text p-1">Catálogo de productos.<br>Aquí podrás consultar el catálogo
-                                completo de productos y administrarlos.</p>
-                            <div class="text-center">
-                                <a href="mostrarProductos.html" class="btn bg-blue text-white btn-grow">Acceder</a>
-                            </div>
+                            <h5 class="card-title">Ingresos</h5>
+                            <p class="card-text fs-3">$9.562.000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card text-center bg-blue text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Usuarios Activos</h5>
+                            <p class="card-text fs-3">350</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-        </div>
+            <!-- Gráfico -->
+            <div class="card p-3 bg-gray text-white">
+                <h5>Ventas por Mes</h5>
+                <canvas id="graficoVentas"></canvas>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -167,7 +168,26 @@
         </div>
     </footer>
 
-        </script>
+    <!-- Librería Chart.js para los gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('graficoVentas').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+                datasets: [{
+                    label: 'Ventas',
+                    data: [210, 150, 241, 230, 369],
+                    backgroundColor: '#6f42c1'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } }
+            }
+        });
+    </script>
     <!-- Script para responsive sidebar -->
     <script>
         const boton = document.getElementById("toggleSidebar");
@@ -181,8 +201,6 @@
     <script src="../scripts/js/autenticacion.js"></script>
     <script src="../scripts/global.js"></script>
     <script src="../scripts/soporteWsp.js"></script>
+
 </body>
-
-
-
 </html>

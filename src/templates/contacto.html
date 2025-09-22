@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/soporteWsp.css">
+    <link rel="stylesheet" href="../styles/contactStyle/contacto.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="../assets/icon/icon.ico">
+    <title>Contacto - LevelUp Gamer</title>
+
+    <style>
+        /* Estilos para mensajes */
+        .alert-message {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            display: none;
+        }
+        
+        .alert-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .form-control.error {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-md">
+            <div class="container">
+                <a class="navbar-brand mx-auto">
+                    <img src="../assets/icons/logo.png" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMinimal"
+                    aria-controls="navbarMinimal" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMinimal">
+                    <ul class="navbar-nav mx-auto gap-3">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    </ul>
+                    <div class="header-actions gap-3">
+                        <!-- Botón de login/cerrar sesión -->
+                        <a href="login.html" id="btn-login" class="btn-login">
+                            Iniciar Sesión
+                            <i class="bi bi-box-arrow-in-right"></i>
+                        </a>
+                        <!-- Carrito con badge -->
+                        <a href="carrito.html" class="btn-cart">
+                            <i class="bi bi-cart-fill"></i>
+                            <span class="badge" id="carrito-badge"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contact-main text-center py-5">
+        <!-- Logo y nombre de la empresa -->
+        <div class="mb-4">
+            <h1 class="contact-title">LevelUp Gamer</h1>
+            <p class="contact-subtitle">Contáctanos</p>
+        </div>
+
+        <!-- Formulario -->
+        <form id="contactForm" class="contact-form mx-auto p-4 rounded shadow">
+            <!-- Nombre -->
+            <div class="mb-3 text-start">
+                <label for="name" class="form-label text-white">Nombre <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="name" name="name" maxlength="100" required
+                    placeholder="Tu nombre">
+            </div>
+
+            <!-- Correo -->
+            <div class="mb-3 text-start">
+                <label for="email" class="form-label text-white">Correo <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" maxlength="100" required
+                    placeholder="correo@duoc.cl">
+                <div class="form-text text-white">Aceptamos @duoc.cl, @profesor.duoc.cl y @gmail.com</div>
+            </div>
+
+            <!-- Comentario -->
+            <div class="mb-3 text-start">
+                <label for="comment" class="form-label text-white">Comentario <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="comment" name="comment" rows="5" maxlength="500" required
+                    placeholder="Escribe tu mensaje aquí..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        </form>
+
+        <!-- Mensaje de error -->
+        <div id="errorMessage" class="alert alert-danger mt-3 alert-message" role="alert">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <span id="errorText"></span>
+            </div>
+        </div>
+
+        <!-- Mensaje de éxito -->
+        <div id="successMessage" class="alert alert-success mt-3 alert-message" role="alert">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <span>¡Gracias! Tu mensaje ha sido enviado correctamente.</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section text-white">
+        <div class="container py-5">
+            <div class="row align-items-start">
+                <!-- LOGO + Métodos de pago -->
+                <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
+                    <h5>Métodos de Pago</h5>
+                    <div class="payment-methods d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
+                        <i class="bi bi-credit-card payment-icon" title="Tarjeta de crédito"></i>
+                        <i class="bi bi-wallet2 payment-icon" title="Pago con billetera"></i>
+                        <i class="bi bi-bank payment-icon" title="Transbank/WebPay"></i>
+                        <i class="bi bi-cash-stack payment-icon" title="Redcompra/Débito"></i>
+                    </div>
+                </div>
+
+                <!-- ENLACES RÁPIDOS -->
+                <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- REDES SOCIALES -->
+                <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start">
+                    <h5>Síguenos</h5>
+                    <div class="social-icons d-flex justify-content-center justify-content-md-start gap-3 mt-2">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- NEWSLETTER -->
+                <div class="col-12 col-md-3 text-center text-md-start">
+                    <h5>Suscríbete</h5>
+                    <p>Recibe ofertas exclusivas y novedades en tu correo.</p>
+                    <form class="flex flex-column flex-sm-row gap-2" action="#" method="POST">
+                        <input type="email" class="form-control w-100" placeholder="Correo electrónico" required>
+                        <button type="submit" class="btn btn-primary my-2 w-100">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2025 Level Up Gamer. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <div class="whatsapp-container">
+        <a href="#" class="whatsapp-float" id="whatsapp-btn" aria-label="Soporte Técnico">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+
+        <!-- CUADRO DE CONFIRMACIÓN -->
+        <div class="whatsapp-confirm" id="whatsapp-confirm">
+            <i class="bi bi-headset"></i>
+            <p>Serás redirigido a WhatsApp<br>para contactar al servicio técnico.</p>
+            <div class="actions">
+                <button id="cancel-btn" class="btn btn-secondary">Cancelar</button>
+                <a href="https://wa.me/56912345678?text=Hola,%20necesito%20soporte%20técnico" target="_blank"
+                    id="continue-btn" class="btn btn-success">Continuar</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/global.js"></script>
+    <script src="../scripts/soporteWsp.js"></script>
+    <script src="../scripts/contacto.js"></script>
+    <script src="../scripts/autenticacion.js"></script>
+
+</body>
+
+</html>

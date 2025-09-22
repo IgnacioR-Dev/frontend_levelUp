@@ -1,0 +1,216 @@
+.contact-main {
+    position: relative; /* Necesario para el overlay */
+    background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');
+    background-size: cover;
+    background-position: center;
+    min-height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3rem 1rem;
+    color: #fff;
+    z-index: 1;
+}
+
+/* Overlay semitransparente */
+.contact-main::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* negro con 60% de opacidad */
+    z-index: -1; /* Detrás del contenido */
+}
+
+/* ===== Logo y títulos ===== */
+.contact-logo {
+    width: 120px;
+    height: auto;
+}
+
+.contact-title {
+    font-family: 'Finger Paint', cursive;
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 0.5rem 0;
+    color: #e2d814;
+    text-shadow: 0 0 8px #211e23, 0 0 4px #ece8f1;
+}
+
+.contact-subtitle {
+    font-family: 'Finger Paint', cursive;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ccc;
+    margin-top: 20px;
+}
+
+/* ===== Formulario ===== */
+.contact-form {
+    max-width: 500px;
+    width: 100%;
+    background-color: #130a29; /* Fondo oscuro del formulario */
+    padding: 2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.contact-form .form-label {
+    font-weight: 500;
+    color: #d4cedc;
+}
+
+.contact-form .form-control {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    background-color: #d4cedc;
+    color: #030303;
+    border: 1px solid #3d0861;
+    transition: all 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+    border-color: #732bd0;
+    box-shadow: 0 0 0 0.25rem rgba(115,43,208,0.25);
+    background-color: #ffffff;
+}
+
+.contact-form .form-control.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    background-color: #fff5f5;
+}
+
+.contact-form .form-text {
+    color: #b8b8b8;
+    font-size: 0.85rem;
+}
+
+/* ===== Botón enviar ===== */
+.contact-form .btn-primary {
+    background: linear-gradient(135deg, #732bd0 0%, #5a1fa8 100%);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.contact-form .btn-primary:hover {
+    background: linear-gradient(135deg, #5a1fa8 0%, #482188 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(115, 43, 208, 0.4);
+}
+
+/* ===== Mensajes de alerta ===== */
+.alert-message {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: none;
+    border: none;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.alert-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+    border-left: 4px solid #a71e2a;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+    border-left: 4px solid #1e7e34;
+}
+
+.alert-message .bi {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+/* Mensaje de éxito existente */
+#successMessage {
+    font-weight: 500;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+    max-width: 500px;
+    margin: 1rem auto;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .contact-main {
+        padding: 2rem 1rem;
+    }
+
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-subtitle {
+        font-size: 1rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+        margin: 0 10px;
+    }
+
+    .alert-message {
+        margin: 1rem 10px;
+        padding: 0.75rem 1rem;
+    }
+    
+    #successMessage {
+        margin: 1rem 10px;
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Animación para el mensaje de éxito */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-message.show, #successMessage {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Efecto de pulso para inputs con error */
+@keyframes pulseError {
+    0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+.form-control.error {
+    animation: pulseError 0.5s;
+}

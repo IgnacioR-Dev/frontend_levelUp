@@ -57,7 +57,7 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                <li><a id="btn-login" class="btn-login" href="./login.html">Cerrar sesión</a></li>
               </ul>
             </li>
           </ul>
@@ -66,9 +66,30 @@
     </nav>
   </header>
 
+
   <!-- Contenido -->
-  <main
+  <main class="d-flex"
     style="background-image: url('https://www.shutterstock.com/shutterstock/videos/1102153557/thumb/1.jpg?ip=x480');">
+
+    <!-- Sidebar -->
+    <aside class="sidebar bg-darkpurple p-3">
+      <h4 class="text-white">Administrador</h4>
+      <button class="btn btn-outline-light d-md-none mb-3" id="toggleSidebar">
+        ☰ Menú
+      </button>
+      <ul class="nav flex-column p-3" id="menuSidebar">
+        <li class="nav-item p-2"><a href="administrador.html" class="nav-link text-white">Panel de Administrador</a>
+        </li>
+        <li class="nav-item p-2"><a href="dashboard.html" class="nav-link text-white">Dashboard</a></li>
+        <li class="nav-item p-2"><a href="nuevoProducto.html" class="nav-link text-white">Agregar Productos</a>
+        </li>
+        <li class="nav-item p-2"><a href="mostrarProductos.html" class="nav-link text-white">Ver Productos</a>
+        </li>
+        <li class="nav-item p-2"><a href="nuevoUsuario.html" class="nav-link text-white">Crear Usuarios</a></li>
+        <li class="nav-item p-2"><a href="mostrarUsuarios.html" class="nav-link text-white">Ver Usuarios</a>
+        </li>
+      </ul>
+    </aside>
     <div class="container p-3 bg-darkpurple">
       <h2>Registro de Productos</h2>
 
@@ -148,7 +169,7 @@
             </div>
             <div class="mb-3">
               <label for="editarPrecio" class="form-label">Precio</label>
-              <input type="number" class="form-control" id="editarPrecio" step="1" required>
+              <input type="number" class="form-control" id="editarPrecio" step="0.01" min="0" required>
             </div>
             <div class="mb-3">
               <label for="editarCantidad" class="form-label">Cantidad</label>
@@ -288,6 +309,21 @@
 
     cargarProductos();
   </script>
+
+  </script>
+  <!-- Script para responsive sidebar -->
+  <script>
+    const boton = document.getElementById("toggleSidebar");
+    const menu = document.getElementById("menuSidebar");
+
+    boton.addEventListener("click", () => {
+      menu.classList.toggle("activo");
+    });
+  </script>
+  <!-- Scripts de globales -->
+  <script src="../scripts/js/autenticacion.js"></script>
+  <script src="../scripts/global.js"></script>
+  <script src="../scripts/soporteWsp.js"></script>
 
 </body>
 

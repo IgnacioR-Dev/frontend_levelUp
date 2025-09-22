@@ -55,3 +55,35 @@ body {
 main {
     flex: 1; /* hace que el contenido crezca y empuje el footer abajo */
 }
+
+
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+}
+
+.sidebar .nav-link {
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #6f42c1;
+}
+
+/* En móviles la sidebar se vuelve colapsable */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  #menuSidebar {
+    display: none; /* oculto por defecto */
+  }
+
+  #menuSidebar.activo {
+    display: block;
+  }
+}
